@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+<style>
+    /* Add some basic styling for the card */
+
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 20px;
+        width: 20%;
+    }
+
+    .image {
+        width: 100%;
+        height: 60%;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+    }
+
+    .card-content {
+        padding: 20px;
+    }
+
+    .back_btn {
+        border-radius: 8px;
+        height: 5%;
+        width: 7%;
+    }
+</style>
+{% endblock %}
+
+{% block detail %}
+
+<div class="title">
+    <h2>{{ object.event_name }}</h2>
+    <p>{{ object.date }} at {{ object.time }}</p>
+    <button class="back_btn"><a href="/">back</a></button>
+</div>
+
+<div class="cards">
+    {% for user in users %}
+    <div class="card">
+        <img class="image" src="{{ user.qr_code.url }}" alt="Card Image">
+        <div class="card-content">
+            <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+            <h3>{{ user.phone_number }}</h3>
+        </div>
+    </div>
+    {% endfor%}
+</div>
+
+{% endblock %}

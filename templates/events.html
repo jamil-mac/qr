@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+<style>
+
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 20px;
+        width: 20%;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+    }
+
+    .card-content {
+        padding: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block detail %}
+
+<div class="cards">
+    {% for event in events %}
+    <div class="card">
+        <!--            <img src="{{ event.qr_code.url }}" alt="Card Image">-->
+        <div class="card-content">
+            <a href="{% url 'back:event-detail' pk=event.pk %}"><b>{{event.event_name}}</b></a>
+            <p>{{ event.date }} at {{ event.time }}</p>
+        </div>
+    </div>
+    {% endfor%}
+</div>
+
+{% endblock %}
