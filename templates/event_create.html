@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+<style>
+    /* Style for form container */
+
+    h2 {
+        text-align: center;
+    }
+
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    /* Style for labels */
+    label {
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    /* Style for text and date inputs */
+    input[type="text"],
+    input[type="date"],
+    input[type="time"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 12px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    /* Style for submit button */
+    a, input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    /* Hover effect for the submit button */
+    a:hover, input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    a {
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+
+</style>
+{% endblock %}
+
+{% block detail %}
+
+<h2>Event Create Form</h2>
+
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="event_name">First Name:</label>
+    <input type="text" id="event_name" name="event_name" required><br>
+
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" required><br>
+
+    <label for="time">Time:</label>
+    <input type="time" id="time" name="time" required>
+
+    <a type="button" href="{% url 'back:events' %}">Back</a>
+    <input type="submit" value="Register">
+
+{% endblock %}

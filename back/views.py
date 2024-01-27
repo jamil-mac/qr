@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 
-from back.models import EventModel
+from back.forms import UserRegistrationForm, EventCreateForm
+from back.models import EventModel, UserModel
 
 
 class EventsListView(ListView):
@@ -20,3 +21,27 @@ class EventDetailView(DetailView):
         context['users'] = event_instance.users.all()
         return context
 
+
+class UserCreateView(CreateView):
+    model = UserModel
+    template_name = 'registration.html'
+    form_class = UserRegistrationForm
+    success_url = '/'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['events'] = EventModel.objects.all()
+        return context
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
+
+class EventCreateView(CreateView):
+    model = EventModel
+    template_name = 'event_create.html'
+    form_class = EventCreateForm
+    success_url = '/'
+
+    def form_valid(self, form):
+        return super().form_valid(form)

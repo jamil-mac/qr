@@ -36,7 +36,6 @@ class UserModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created_at'))
 
     def save(self, *args, **kwargs):
-        # Check if the qr_code is already set
         if not self.qr_code:
             self.generate_qr_code()
         super().save(*args, **kwargs)

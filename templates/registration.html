@@ -1,4 +1,4 @@
-{% extends 'base.html %}
+{% extends 'base.html' %}
 
 {% block extra_css %}{% endblock %}
 
@@ -6,7 +6,8 @@
 
 <h2>Registration Form</h2>
 
-<form action="" method="post">
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
     <label for="first_name">First Name:</label>
     <input type="text" id="first_name" name="first_name" required><br>
 
@@ -14,15 +15,15 @@
     <input type="text" id="last_name" name="last_name" required><br>
 
     <label for="phone_number">Phone Number:</label>
-    <input type="tel" id="phone_number" name="phone_number" pattern="[0-9]{10}" required>
-    <small>Format: 1234567890</small><br>
+    <input type="text" id="phone_number" name="phone_number" required>
+    <small>Format: +998901234567</small><br>
 
     <label for="event">Event:</label>
     <select id="event" name="event" required>
-        <option value="event1">Event 1</option>
-        <option value="event2">Event 2</option>
-        <option value="event3">Event 3</option>
-        <!-- Add more options as needed -->
+        {% for event in events %}
+            <option value="{{ event.id }}">{{ event.event_name }}</option>
+        {% endfor %}}
+
     </select><br>
 
     <input type="submit" value="Register">
