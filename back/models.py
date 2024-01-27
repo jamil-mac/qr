@@ -21,6 +21,32 @@ class EventModel(models.Model):
         verbose_name_plural = 'events'
 
 
+class FacultyModel(models.Model):
+    faculty_name = models.CharField(max_length=255, verbose_name=_('faculty_name'))
+
+    def __str__(self):
+        return self.faculty_name
+
+    class Meta:
+        verbose_name = 'faculty'
+        verbose_name_plural = 'faculties'
+
+
+class GroupModel(models.Model):
+    group_number = models.IntegerField(verbose_name=_('group_number'))
+    letter = models.CharField(max_length=3, verbose_name=_('letter'), null=True, blank=True)
+
+    def get_name(self):
+        return f'{self.group_number}-{self.letter}' if self.letter is not None else f'{self.group_number}'
+
+    def __str__(self):
+        return f'{self.group_number}-{self.letter}' if self.letter is not None else f'{self.group_number}'
+
+    class Meta:
+        verbose_name = 'group'
+        verbose_name_plural = 'groups'
+
+
 class UserModel(models.Model):
     first_name = models.CharField(max_length=100, verbose_name=_('first_name'))
     last_name = models.CharField(max_length=100, verbose_name=_('last_name'))
@@ -30,6 +56,18 @@ class UserModel(models.Model):
         on_delete=models.CASCADE,
         related_name=_('users'),
         verbose_name=_('event')
+    )
+    faculty = models.ForeignKey(
+        FacultyModel,
+        on_delete=models.CASCADE,
+        related_name=_('users'),
+        verbose_name=_('faculty')
+    )
+    group = models.ForeignKey(
+        GroupModel,
+        on_delete=models.CASCADE,
+        related_name=_('users'),
+        verbose_name=_('group')
     )
     qr_code = models.ImageField(upload_to='qrcodes/', null=True, blank=True)
 

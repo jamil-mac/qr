@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView
 
 from back.forms import UserRegistrationForm, EventCreateForm
-from back.models import EventModel, UserModel
+from back.models import EventModel, UserModel, FacultyModel, GroupModel
 
 
 class EventsListView(ListView):
@@ -31,6 +31,8 @@ class UserCreateView(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['events'] = EventModel.objects.all()
+        context['faculties'] = FacultyModel.objects.all()
+        context['groups'] = GroupModel.objects.all()
         return context
 
     def form_valid(self, form):

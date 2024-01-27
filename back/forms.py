@@ -6,7 +6,7 @@ from back.models import UserModel, EventModel
 class UserRegistrationForm(forms.ModelForm):
     class Meta:
         model = UserModel
-        fields = ('first_name', 'last_name', 'phone_number', 'event',)
+        fields = ('first_name', 'last_name', 'phone_number', 'faculty', 'group', 'event',)
 
 
 class EventCreateForm(forms.ModelForm):
