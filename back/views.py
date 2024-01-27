@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView
 
 from back.forms import UserRegistrationForm, EventCreateForm
@@ -26,7 +27,6 @@ class UserCreateView(CreateView):
     model = UserModel
     template_name = 'registration.html'
     form_class = UserRegistrationForm
-    success_url = '/'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -38,6 +38,10 @@ class UserCreateView(CreateView):
     def form_valid(self, form):
         return super().form_valid(form)
 
+    def get_success_url(self):
+        user_pk = self.object.pk
+        return reverse('back:user-detail', kwargs={'pk': user_pk})
+
 
 class EventCreateView(CreateView):
     model = EventModel
@@ -47,3 +51,8 @@ class EventCreateView(CreateView):
 
     def form_valid(self, form):
         return super().form_valid(form)
+
+
+class UserQRCodeView(DetailView):
+    model = UserModel
+    template_name = 'qr_for _user.html'
