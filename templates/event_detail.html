@@ -2,7 +2,11 @@
 
 {% block extra_css %}
 <style>
-    /* Add some basic styling for the card */
+    .container {
+        width: 1000px;
+        margin: 0 auto;
+        padding: 0;
+    }
 
     .cards {
         display: flex;
@@ -21,7 +25,7 @@
 
     .image {
         width: 100%;
-        height: 60%;
+        height: 50%;
     }
 
     a {
@@ -30,36 +34,53 @@
         font-size: 20px;
     }
 
+    .title {
+        max-width: 33.33%;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 10px 15px;
+    }
+
     .card-content {
         padding: 20px;
     }
 
     .back_btn {
+        border: 1px solid black;
         border-radius: 8px;
+        padding: 5px 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         height: 5%;
         width: 7%;
+        margin-bottom: 10px;
+    }
+
+    .back_btn:hover {
+        background-color: black;
+        color: white;
     }
 </style>
 {% endblock %}
 
 {% block detail %}
-
-<div class="title">
-    <h2>{{ object.event_name }}</h2>
-    <p>{{ object.date }} at {{ object.time }}</p>
-    <button class="back_btn"><a href="/">back</a></button>
-</div>
-
-<div class="cards">
-    {% for user in users %}
-    <div class="card">
-        <img class="image" src="{{ user.qr_code.url }}" alt="Card Image">
-        <div class="card-content">
-            <h2>{{ user.first_name }} {{ user.last_name }}</h2>
-            <h3>{{ user.phone_number }}</h3>
-        </div>
+<section class="container">
+    <div class="title">
+        <h2>{{ object.event_name }}</h2>
+        <p>{{ object.date }} at {{ object.time }}</p>
+        <a class="back_btn" href="/">back</a>
     </div>
-    {% endfor%}
-</div>
 
+    <div class="cards">
+        {% for user in users %}
+        <div class="card">
+            <img class="image" src="{{ user.qr_code.url }}" alt="Card Image">
+            <div class="card-content">
+                <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+                <h3>{{ user.phone_number }}</h3>
+            </div>
+        </div>
+        {% endfor%}
+    </div>
+</section>
 {% endblock %}
