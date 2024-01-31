@@ -37,7 +37,15 @@
     <div class="card">
         <!--            <img src="{{ event.qr_code.url }}" alt="Card Image">-->
         <div class="card-content">
-            <a href="{% url 'back:event-detail' pk=event.pk %}"><b>{{event.event_name}}</b></a>
+            <a href="{% url 'back:event-detail' pk=event.pk %}">
+                <b>
+                    {{ event.event_name }}
+                </b>
+                <br>
+                <small>
+                    registered students: {{ event.users.count }}
+                </small>
+            </a>
             <p>{{ event.date }} at {{ event.time }}</p>
         </div>
     </div>

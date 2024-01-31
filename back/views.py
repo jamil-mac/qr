@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView
 
@@ -16,10 +15,18 @@ class EventDetailView(DetailView):
     template_name = 'event_detail.html'
     model = EventModel
 
-    def get_context_data(self, *args, **kwargs):
-        context = super(EventDetailView, self).get_context_data(*args, **kwargs)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         event_instance = self.get_object()
         context['users'] = event_instance.users.all()
+        context['faculties'] = FacultyModel.objects.all()
+
+        context['faculty_counts'] = {faculty.faculty_name: 0 for faculty in context['faculties']}
+
+        for user in context['users']:
+            faculty_name = user.faculty.faculty_name
+            context['faculty_counts'][faculty_name] += 1
+
         return context
 
 
