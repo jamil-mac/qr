@@ -2,7 +2,6 @@ amqp==1.4.9
 anyjson==0.3.3
 asgiref==3.5.0
 billiard==3.3.0.23
-celery==3.1.26.post2
 certifi==2021.10.8
 charset-normalizer==2.0.10
 click==8.1.7
@@ -17,7 +16,6 @@ Deprecated==1.2.13
 dj-database-url==0.5.0
 Django==3.2.12
 django-appconf==1.0.5
-django-celery==3.3.1
 django-ckeditor==6.2.0
 django-crispy-forms==1.13.0
 django-environ==0.8.1
@@ -43,6 +41,7 @@ namespace==0.1.4
 packaging==21.3
 phonenumbers==8.12.41
 pillow==10.2.0
+pip==23.3.2
 prompt-toolkit==3.0.24
 psycopg2==2.9.3
 psycopg2-binary==2.9.3
@@ -54,11 +53,11 @@ python-dateutil==2.8.2
 pytz==2021.3
 qrcode==7.4.2
 rcssmin==1.0.6
-redis==4.1.0
 requests==2.27.1
 rjsmin==1.0.12
 ruamel.yaml==0.17.20
 ruamel.yaml.clib==0.2.6
+setuptools==59.6.0
 six==1.16.0
 sqlparse==0.4.4
 typing_extensions==4.9.0
