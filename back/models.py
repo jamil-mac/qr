@@ -69,7 +69,7 @@ class UserModel(models.Model):
         related_name=_('users'),
         verbose_name=_('group')
     )
-    qr_code = models.ImageField(upload_to='qrcodes/', null=True, blank=True)
+    qr_code = models.ImageField(null=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created_at'))
 
@@ -95,7 +95,6 @@ class UserModel(models.Model):
 
         img_path = f'{directory}{self.event.event_name}_{self.first_name}_{self.last_name}.png'
 
-        # Save the image to a BytesIO object
         img_bytes_io = BytesIO()
         img.save(img_bytes_io)
         img_bytes_io.seek(0)
