@@ -17,7 +17,7 @@ app.autodiscover_tasks()
 app.conf.beat_schedule = {
     'delete-outdated-events-every-day-at-22-00': {
         'task': 'back.tasks.delete_expired_data',
-        'schedule': crontab(hour=9, minute=44),  # Run every day at 22:00
+        'schedule': crontab(hour=9, minute=15),  # Run every day at 22:00
     },
 }
 

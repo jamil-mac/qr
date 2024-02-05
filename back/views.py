@@ -4,6 +4,21 @@ from django.views.generic import ListView, DetailView, CreateView
 from back.forms import UserRegistrationForm, EventCreateForm
 from back.models import EventModel, UserModel, FacultyModel, GroupModel
 
+from django.shortcuts import render, redirect
+import openpyxl
+from django.views.decorators.csrf import csrf_exempt
+from openpyxl.workbook import Workbook
+
+import telebot
+
+import io
+
+from django.http import HttpResponse
+
+bot = telebot.TeleBot('6585354812:AAE7RpqTwzYVDaP1rJHDj-ulrlOvtVS_d9c')
+
+URL = 'https://api.telegram.org/bot6585354812:AAE7RpqTwzYVDaP1rJHDj-ulrlOvtVS_d9c'
+
 
 class EventsListView(ListView):
     template_name = 'events.html'
@@ -63,3 +78,58 @@ class EventCreateView(CreateView):
 class UserQRCodeView(DetailView):
     model = UserModel
     template_name = 'qr_for _user.html'
+
+
+def export_data(request, pk):
+    wb = Workbook()
+    sheet = wb.active
+
+    event = EventModel.objects.get(pk=pk)
+    users = event.users.all()
+    faculties = FacultyModel.objects.all()
+
+    faculty_counts = {faculty.faculty_name: 0 for faculty in faculties}
+
+    for user in users:
+        faculty_name = user.faculty.faculty_name
+        faculty_counts[faculty_name] += 1
+
+    for faculty_name, count in faculty_counts.items():
+        sheet.append([faculty_name, count])
+
+    filename = event.event_name
+
+    # send_excel_file(chat_id, wb, filename)
+
+    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = f'attachment; filename={filename}.xlsx'
+
+    wb.save(response)
+
+    return reverse('back:event-detail', kwargs={'pk': pk})
+
+
+@csrf_exempt
+def web_hook_view(request):
+    """ setting webhook """
+    if request.method == "POST":
+        bot.process_new_updates([telebot.types.Update.de_json(request.body.decode('utf-8'))])
+        return HttpResponse('ok', status=200)
+    return HttpResponse('ok', status=200)
+
+
+@bot.message_handler(commands=['start'])  # /start
+def start(message):
+    bot.reply_to(message, "Moto moto")
+    print(message.chat.id)
+
+
+def send_excel_file(wb, filename):
+    with io.BytesIO() as output:
+        wb.save(output)
+        output.seek(0)
+        bot.send_document(
+            58939309,
+            output,
+            visible_file_name=filename + '.xlsx'
+        )
