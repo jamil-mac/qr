@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block detail %}
+    <div class="container">
+        <div class="Media">
+            <div class="studentsQr">
+                <div class="divQr">
+                    <img class="img divQr_img" src="{{ object.qr_code.url }}" alt="QR">
+                </div>
+                <div class="studentsInfoP">
+                    <h1 class="eventName">
+                        {{ object.event.event_name }}
+                    </h1>
+                    <p class="p">
+                        Student: {{ object.first_name }} {{ object.last_name }}
+                    </p>
+                    <p class="p">
+                        Group: {{ object.group.get_name }}
+                    </p>
+                    <p class="p">
+                        Faculty: {{ object.faculty.faculty_name }}
+                    </p>
+                    <p class="p">
+                        {{ object.event.date }} at {{ object.event.time }}
+                    </p>
+                </div>
+                <div class="divButton">
+                    <a class="alink" href="/">
+                        <button class="button studentsQr_button">
+                            Main
+                        </button>
+                    </a>
+                    <a class="alink" href="{{ object.qr_code.url }}" download="qrcode.png">
+                        <button class="button studentsQr_button">
+                            Download
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

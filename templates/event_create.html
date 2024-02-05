@@ -1,94 +1,41 @@
 {% extends 'base.html' %}
 
-{% block extra_css %}
-<style>
-    body {
-        margin: 0;
-        font-family: 'Roboto', sans-serif;
-        background-color: #f4f4f4;
-    }
-
-    h2 {
-        text-align: center;
-        color: #3498db;
-        margin: 20px 0;
-    }
-
-    .container {
-        max-width: 400px;
-        margin: 20px auto;
-        padding: 20px;
-        background-color: white;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        box-sizing: border-box;
-    }
-
-    form {
-        display: flex;
-        flex-direction: column;
-    }
-
-    label {
-        margin-bottom: 8px;
-        color: #333;
-    }
-
-    input[type="text"],
-    input[type="date"],
-    input[type="time"] {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 16px;
-        box-sizing: border-box;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
-    .btns {
-        display: flex;
-        justify-content: space-between;
-    }
-    a, input[type="submit"] {
-        background-color: #3498db;
-        color: white;
-        padding: 10px 15px;
-        margin: 5px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        text-decoration: none;
-        text-align: center;
-        transition: background-color 0.3s ease;
-    }
-
-    a:hover, input[type="submit"]:hover {
-        background-color: #2980b9;
-    }
-
-
-</style>
-
-{% endblock %}
+{% block extra_css %}{% endblock %}
 
 {% block detail %}
 
-<h2>Event Create Form</h2>
-<div class="container">
-    <form action="" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <label for="event_name">Event Name:</label>
-        <input type="text" id="event_name" name="event_name" required><br>
+    <div class="divCenter">
+        <div class="eventCreate">
+            <h1 class="eventName">Form create</h1>
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="divInput">
+                    <label class="label">Event-name:
+                        <input class="input" id="event_name" name="event_name" type="text" placeholder="Event-Name"
+                               required>
+                    </label>
+                    <label class="label">Date:
+                        <input class="input" id="date" name="date" type="date" placeholder="Date" required>
+                    </label>
+                    <label class="label">Time:
+                        <input class="input" id="time" name="time" type="time" placeholder="Time" required>
+                    </label>
+                </div>
 
-        <label for="date">Date:</label>
-        <input type="date" id="date" name="date" required><br>
+                <div class="divButton">
+                    <a class="alink" href="{% url 'back:events' %}">
+                        <button type="submit" class="button">
+                            create
+                        </button>
+                    </a>
+                    <a class="alink" href="{% url 'back:events' %}">
+                        <button type="button" class="button">
+                            Back
+                        </button>
+                    </a>
+                </div>
+            </form>
 
-        <label for="time">Time:</label>
-        <input type="time" id="time" name="time" required>
-        <div class="btns">
-
-            <a type="button" href="{% url 'back:events' %}">Back</a>
-            <input type="submit" value="Create">
         </div>
-    </form>
-</div>
+    </div>
 {% endblock %}

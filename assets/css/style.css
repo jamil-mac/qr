@@ -1,0 +1,369 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    background-color: #dcdcdc;
+}
+
+a {
+    text-decoration: none;
+}
+
+.p {
+    margin-top: 5px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.eventName {
+    color: #54AEE2;
+    font-size: 32px;
+    text-transform: uppercase;
+    margin-bottom: 13px;
+}
+
+.p {
+    margin-right: 20px;
+}
+
+.input {
+    display: block;
+    width: 100%;
+    height: 45px;
+    border: 2px solid;
+    border-radius: 16px;
+    font-size: 14px;
+    line-height: 16px;
+    padding-left: 25px;
+    margin-bottom: 13px;
+    margin-top: 8px;
+}
+
+
+
+.button {
+    margin-top: 13px;
+    padding: 10px;
+    display: block;
+    background-color: #54AEE2;
+    color: whitesmoke;
+    width: 100%;
+    height: 45px;
+    font-size: 20px;
+    text-transform: uppercase;
+    border-radius: 16px;
+    border: none;
+    outline: none;
+    transition: 0.2s;
+}
+
+.button:hover {
+    background-color: whitesmoke;
+    color: #54AEE2;
+    border: #54AEE2 2px solid;
+}
+
+.table {
+    width: 100%;
+}
+
+/*studentRegister*/
+
+.register {
+    padding: 30px;
+    background-color: whitesmoke;
+    border-radius: 24px;
+    box-shadow: 0 0 30px 6px rgba(34, 60, 80, 0.2);
+}
+
+.register_eventName{
+    color: #54AEE2;
+    font-size: 32px;
+    text-transform: uppercase;
+    margin-bottom: 13px;
+}
+
+
+
+/*eventCreate*/
+
+.eventCreate {
+    padding: 30px;
+    background-color: whitesmoke;
+    border-radius: 24px;
+    box-shadow: 0 0 30px 6px rgba(34, 60, 80, 0.2);
+}
+
+/*3-project css */
+
+.eventGrid {
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-gap: 20px;
+}
+
+.eventInfo {
+    box-shadow: 0 0 30px 3px rgba(34, 60, 80, 0.2);
+    padding: 20px;
+    transition: 0.4s;
+
+}
+
+.divEventInfo_eventName {
+    margin-bottom: 0;
+}
+
+.divEventInfo_button {
+    margin-top: 0;
+}
+
+
+
+.divEventInfo {
+    display: flex;
+}
+
+/*studentsInfo*/
+
+
+.studentsInfoBar {
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.studentsInfoHeader_button {
+    margin-top: 0;
+}
+
+.studentsInfoHeader_eventName {
+    margin-bottom: 0;
+}
+
+.studentsBarTable {
+    margin-top: 13px;
+}
+
+
+
+
+/*studentsInfoTable*/
+
+.studentsInfoTable {
+    overflow: scroll;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.studentsInfoHeader {
+    border-radius: 10px;
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+
+.studentsInfoTable_tr:hover {
+    background-color: #eaeaea;
+}
+
+
+
+/*studentQr*/
+
+
+
+.divQr_img {
+    max-width: 100%;
+}
+
+/*media*/
+
+@media screen and (min-width: 1200px) {
+
+    .divCenter {
+        height: 100%;
+        font-family: Arial, serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .register {
+        max-width: 1000px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 30px;
+    }
+
+    .register_eventName {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 1;
+    }
+
+    .register_divButton {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 3;
+        grid-row-end: 4;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
+    .eventCreate {
+        width: 415px;
+    }
+
+    .eventInfo {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .eventInfo:hover {
+        box-shadow: 0 0 10px 10px rgba(34, 60, 80, 0.2);
+    }
+
+    .studentsInfoGrid {
+        margin: 10px;
+        height: 100vh;
+    }
+
+    .studentsInfoHeader {
+        display: grid;
+        grid-template-columns: 4fr 1fr;
+        align-items: center;
+
+        padding: 20px;
+    }
+
+    .studentsInfoBody {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        gap: 20px;
+    }
+
+    .studentsInfoBar {
+        height: 400px;
+    }
+
+    .studentsInfoTable_tr {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .studentsInfoTable {
+        height: 90vh;
+    }
+
+    .Media {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+
+    .studentsQr {
+        max-width: 415px;
+        margin: auto;
+    }
+
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+
+
+
+    .register {
+        max-width: 480px;
+        margin: auto;
+        height: 100vh;
+    }
+
+    .register_divButton {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .eventCreate {
+        max-width: 480px;
+        margin: auto;
+        height: 100vh;
+    }
+
+    .eventGrid {
+        max-width: 480px;
+
+    }
+
+    .eventInfo {
+        min-height: 50vh;
+        display: grid;
+        grid-template-columns: 1fr;
+        overflow: hidden;
+    }
+
+
+    .studentsInfoHeader_eventName {
+        margin-top: 10px;
+    }
+
+    .studentsInfoHeader_button {
+        max-width: 320px;
+        margin-top: 10px;
+    }
+
+    .studentsInfoGrid {
+        width: 340px;
+        margin: auto;
+    }
+
+    .studentsInfoBar {
+        min-height: 200px;
+        margin-bottom: 20px;
+    }
+
+    .studentsInfoTable_h1 {
+        width: 100%;
+    }
+
+    .studentsInfoTable_table {
+        min-width: 768px;
+    }
+
+    .studentsQr {
+        max-width: 320px;
+        margin: auto;
+    }
+
+    .Media {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

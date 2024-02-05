@@ -4,8 +4,6 @@ from django.views.generic import ListView, DetailView, CreateView
 from back.forms import UserRegistrationForm, EventCreateForm
 from back.models import EventModel, UserModel, FacultyModel, GroupModel
 
-from django.shortcuts import render, redirect
-import openpyxl
 from django.views.decorators.csrf import csrf_exempt
 from openpyxl.workbook import Workbook
 
@@ -77,7 +75,7 @@ class EventCreateView(CreateView):
 
 class UserQRCodeView(DetailView):
     model = UserModel
-    template_name = 'qr_for _user.html'
+    template_name = 'qr_for_user.html'
 
 
 def export_data(request, pk):
@@ -99,14 +97,12 @@ def export_data(request, pk):
 
     filename = event.event_name
 
-    # send_excel_file(chat_id, wb, filename)
-
     response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
     response['Content-Disposition'] = f'attachment; filename={filename}.xlsx'
 
     wb.save(response)
 
-    return reverse('back:event-detail', kwargs={'pk': pk})
+    return response
 
 
 @csrf_exempt

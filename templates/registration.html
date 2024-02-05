@@ -1,124 +1,63 @@
 {% extends 'base.html' %}
 
-{% block extra_css %}
-<style>
-    body {
-        margin: 0;
-        font-family: 'Roboto', sans-serif;
-        background-color: #f4f4f4;
-    }
-
-    h2 {
-        text-align: center;
-        color: #3498db;
-        margin: 20px 0;
-    }
-
-    .container {
-        max-width: 400px;
-        margin: 20px auto;
-        padding: 20px;
-        background-color: white;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        box-sizing: border-box;
-    }
-
-    form {
-        display: flex;
-        flex-direction: column;
-    }
-
-    label {
-        margin-bottom: 8px;
-        color: #333;
-    }
-
-    input[type="text"],
-    select {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 16px;
-        box-sizing: border-box;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-    }
-
-    small {
-        color: #777;
-    }
-
-    select {
-        cursor: pointer;
-    }
-
-    .button-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    input[type="submit"],
-    a {
-        background-color: #3498db;
-        color: white;
-        padding: 10px 15px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        text-decoration: none;
-        transition: background-color 0.3s ease;
-    }
-
-    input[type="submit"]:hover,
-    a:hover {
-        background-color: #2980b9;
-    }
-</style>
-{% endblock %}
-
 {% block detail %}
 
-<h2>Registration Form</h2>
-<div class="container">
-    <form action="" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <label for="first_name">First Name:</label>
-        <input type="text" id="first_name" name="first_name" required><br>
 
-        <label for="last_name">Last Name:</label>
-        <input type="text" id="last_name" name="last_name" required><br>
+    <div class="divCenter">
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="register">
+                <h1 class="eventName register_eventName">Register Form</h1>
+                <div class="divInput">
+                    <label class="label"> First name:
+                        <input class="input" id="first_name" name="first_name" required type="text"
+                               placeholder="First-Name">
+                    </label>
+                    <label class="label"> Last name:
+                        <input class="input" id="last_name" name="last_name" required type="text"
+                               placeholder="Last-Name">
+                    </label>
+                    <label class="label"> Phone number:
+                        <input class="input" id="phone_number" name="phone_number" required type="number"
+                               placeholder="Number">
+                    </label>
+                </div>
+                <div class="divSelect">
+                    <label class="label">Group:
+                        <select class="input" id="group" name="group" required>
+                            {% for group in groups %}
+                                <option class="option" value="{{ group.id }}">{{ group.get_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
+                    <label class="label">Faculty:
+                        <select class="input" id="faculty" name="faculty" required>
+                            {% for faculty in faculties %}
+                                <option class="option" value="{{ faculty.id }}">{{ faculty.faculty_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
+                    <label class="label">Event:
+                        <select class="input" name="event" required>
+                            {% for event in events %}
+                                <option class="option" value="{{ event.id }}">{{ event.event_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
+                </div>
 
-        <label for="phone_number">Phone Number:</label>
-        <input type="text" id="phone_number" name="phone_number" required>
-        <small>Format: +998901234567</small><br>
-
-        <label for="faculty">Faculty:</label>
-        <select id="faculty" name="faculty" required>
-            {% for faculty in faculties %}
-            <option value="{{ faculty.id }}">{{ faculty.faculty_name }}</option>
-            {% endfor %}
-        </select><br>
-
-        <label for="group">Group:</label>
-        <select id="group" name="group" required>
-            {% for group in groups %}
-            <option value="{{ group.id }}">{{ group.get_name }}</option>
-            {% endfor %}
-        </select><br>
-
-        <label for="event">Event:</label>
-        <select id="event" name="event" required>
-            {% for event in events %}
-            <option value="{{ event.id }}">{{ event.event_name }}</option>
-            {% endfor %}
-        </select><br>
-
-        <div class="button-container">
-            <a href="/">Back</a>
-            <input type="submit" value="Register">
-        </div>
-    </form>
-</div>
-
+                <!--        shu seksiyaga ssilka quyasiz -->
+                <div class="divButton register_divButton">
+                    <a class="aLink" href="/">
+                        <button type="button" class="button register_button__back">
+                            Back
+                        </button>
+                    </a>
+                    <button type="submit" class="aLink button register_button__register">
+                        Register
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
 {% endblock %}

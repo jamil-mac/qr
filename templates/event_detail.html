@@ -1,133 +1,69 @@
 {% extends 'base.html' %}
 
-
-{% block extra_css %}
-    <style>
-
-        /* Basic table styling */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-
-        /* Table header styling */
-        th, td {
-            border: 1px solid #dddddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        tr:hover {
-            background-color: #e5e5e5;
-        }
-
-        .container {
-            width: 1000px;
-            margin: 0 auto;
-            padding: 0;
-        }
-
-        .cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-
-        .card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin: 20px;
-            width: 25%;
-        }
-
-        .image {
-            width: 100%;
-            height: 50%;
-        }
-
-        a {
-            text-decoration: none;
-            color: black;
-            font-size: 20px;
-        }
-
-        .title {
-            max-width: 33.33%;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 10px 15px;
-        }
-
-        .card-content {
-            padding: 20px;
-        }
-
-        .back_btn {
-            border: 1px solid black;
-            border-radius: 8px;
-            padding: 5px 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            height: 5%;
-            width: 7%;
-            margin-bottom: 10px;
-        }
-
-        .back_btn:hover {
-            background-color: black;
-            color: white;
-        }
-    </style>
-{% endblock %}
+{% block extra_css %}{% endblock %}
 
 {% block detail %}
-    <section class="container">
-        <div class="title">
-            <h2>{{ object.event_name }}</h2>
-            <p>{{ object.date }} at {{ object.time }}</p>
-
-
-            <table>
-                <thead>
-                <th>Fakultet nomi</th>
-                <th>Talabalar soni</th>
-                </thead>
-                <tbody>
-                    {% for faculty, count in faculty_counts.items %}
-                        <tr>
-                            <td>{{ faculty }}</td>
-                            <td>{{ count }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            <a class="back_btn" href="/">back</a>
-            <a class="back_btn" href="{% url 'back:export-excel' pk=object.pk %}">download</a>
-        </div>
-
-        <div class="cards">
-            {% for user in users %}
-                <div class="card">
-                    <img class="image" src="{{ user.qr_code.url }}" alt="Card Image">
-                    <div class="card-content">
-                        <h2>{{ user.first_name }} {{ user.last_name }}</h2>
-                        <h3>Fakultet: {{ user.faculty.faculty_name }}</h3>
-                        <h3>Guruh: {{ user.group.get_name }}</h3>
-                        <h3>Telefon raqam:{{ user.phone_number }}</h3>
+    <div class="container">
+        <div class="studentsInfoGrid">
+            <div class="studentsInfoHeader">
+                <h1 class="eventName studentsInfoHeader_eventName">
+                    {{ object.event_name }}
+                </h1>
+                <a class="alink" href="{% url 'back:export-excel' pk=object.pk %}">
+                    <button class="button studentsInfoHeader_button">
+                        download
+                    </button>
+                </a>
+            </div>
+            <div class="studentsInfoBody">
+                <div class="studentsInfoBar">
+                    <div class="eventInfoBar">
+                        <p class="p">{{ object.date }} at {{ object.time }}</p>
+                    </div>
+                    <div class="studentsBarTable">
+                        <table class="table studentsBarTable_table">
+                            <tr class="tr">
+                                <th class="th">Faculty:</th>
+                                <th class="th">Students:</th>
+                            </tr>
+                            {% for faculty, count in faculty_counts.items %}
+                                <tr class="tr">
+                                    <td class="td"> {{ faculty }}</td>
+                                    <td class="td studentsBarTable_td">{{ count }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                    <div class="divButton">
+                        <a class="alink" href="/">
+                            <button class="button">
+                                back
+                            </button>
+                        </a>
                     </div>
                 </div>
-            {% endfor %}
+                <div class="studentsInfoTable">
+                    <h1 class="eventName studentsInfoTable_h1">Students information</h1>
+                    <table class="table studentsInfoTable_table">
+                        <tr class="tr studentsInfoTable_tr">
+                            <th class="th studentsInfoTable_th">First_name</th>
+                            <th class="th studentsInfoTable_th">Last_name</th>
+                            <th class="th studentsInfoTable_th">Faculty</th>
+                            <th class="th studentsInfoTable_th">Group</th>
+                            <th class="th studentsInfoTable_th">Number</th>
+                        </tr>
+                        {% for user in users %}
+                            <tr class="tr studentsInfoTable_tr">
+                                <td class="td studentsInfoTable_td">{{ user.first_name }}</td>
+                                <td class="td studentsInfoTable_td">{{ user.last_name }}</td>
+                                <td class="td studentsInfoTable_td">{{ user.faculty.faculty_name }}</td>
+                                <td class="td studentsInfoTable_td">{{ user.group.get_name }}</td>
+                                <td class="td studentsInfoTable_td">{{ user.phone_number }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
 {% endblock %}
