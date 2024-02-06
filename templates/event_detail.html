@@ -3,67 +3,71 @@
 {% block extra_css %}{% endblock %}
 
 {% block detail %}
-    <div class="container">
-        <div class="studentsInfoGrid">
-            <div class="studentsInfoHeader">
-                <h1 class="eventName studentsInfoHeader_eventName">
-                    {{ object.event_name }}
-                </h1>
-                <a class="alink" href="{% url 'back:export-excel' pk=object.pk %}">
-                    <button class="button studentsInfoHeader_button">
-                        download
-                    </button>
-                </a>
-            </div>
-            <div class="studentsInfoBody">
-                <div class="studentsInfoBar">
-                    <div class="eventInfoBar">
-                        <p class="p">{{ object.date }} at {{ object.time }}</p>
-                    </div>
-                    <div class="studentsBarTable">
-                        <table class="table studentsBarTable_table">
-                            <tr class="tr">
-                                <th class="th">Faculty:</th>
-                                <th class="th">Students:</th>
-                            </tr>
-                            {% for faculty, count in faculty_counts.items %}
+    <div class="bgColor">
+
+        <div class="container">
+            <div class="studentsInfoGrid">
+                <div class="studentsInfoHeader">
+                    <h1 class="eventName studentsInfoHeader_eventName">
+                        {{ object.event_name }}
+                    </h1>
+                    <a class="alink" href="{% url 'back:export-excel' pk=object.pk %}">
+                        <button class="button studentsInfoHeader_button">
+                            download
+                        </button>
+                    </a>
+                </div>
+                <div class="studentsInfoBody">
+                    <div class="studentsInfoBar">
+                        <div class="eventInfoBar">
+                            <p class="p">{{ object.date }} at {{ object.time }}</p>
+                        </div>
+                        <div class="studentsBarTable">
+                            <table class="table studentsBarTable_table">
                                 <tr class="tr">
-                                    <td class="td"> {{ faculty }}</td>
-                                    <td class="td studentsBarTable_td">{{ count }}</td>
+                                    <th class="th studentsInfoTable_th">Faculty:</th>
+                                    <th class="th studentsInfoTable_th">Students:</th>
+                                </tr>
+                                {% for faculty, count in faculty_counts.items %}
+                                    <tr class="tr">
+                                        <td class="td studentsInfoTable_td"> {{ faculty }}</td>
+                                        <td class="td studentsInfoTable_td">{{ count }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                        <div class="divButton">
+                            <a class="alink" href="/">
+                                <button class="button">
+                                    back
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="studentsInfoTable">
+                        <h1 class="eventName studentsInfoTable_h1">Students information</h1>
+                        <table class="table studentsInfoTable_table">
+                            <tr class="tr studentsInfoTable_tr">
+                                <th class="th studentsInfoTable_th">First_name</th>
+                                <th class="th studentsInfoTable_th">Last_name</th>
+                                <th class="th studentsInfoTable_th">Faculty</th>
+                                <th class="th studentsInfoTable_th">Group</th>
+                                <th class="th studentsInfoTable_th">Number</th>
+                            </tr>
+                            {% for user in users %}
+                                <tr class="tr studentsInfoTable_tr">
+                                    <td class="td studentsInfoTable_td">{{ user.first_name }}</td>
+                                    <td class="td studentsInfoTable_td">{{ user.last_name }}</td>
+                                    <td class="td studentsInfoTable_td">{{ user.faculty.faculty_name }}</td>
+                                    <td class="td studentsInfoTable_td">{{ user.group.get_name }}</td>
+                                    <td class="td studentsInfoTable_td">{{ user.phone_number }}</td>
                                 </tr>
                             {% endfor %}
                         </table>
                     </div>
-                    <div class="divButton">
-                        <a class="alink" href="/">
-                            <button class="button">
-                                back
-                            </button>
-                        </a>
-                    </div>
-                </div>
-                <div class="studentsInfoTable">
-                    <h1 class="eventName studentsInfoTable_h1">Students information</h1>
-                    <table class="table studentsInfoTable_table">
-                        <tr class="tr studentsInfoTable_tr">
-                            <th class="th studentsInfoTable_th">First_name</th>
-                            <th class="th studentsInfoTable_th">Last_name</th>
-                            <th class="th studentsInfoTable_th">Faculty</th>
-                            <th class="th studentsInfoTable_th">Group</th>
-                            <th class="th studentsInfoTable_th">Number</th>
-                        </tr>
-                        {% for user in users %}
-                            <tr class="tr studentsInfoTable_tr">
-                                <td class="td studentsInfoTable_td">{{ user.first_name }}</td>
-                                <td class="td studentsInfoTable_td">{{ user.last_name }}</td>
-                                <td class="td studentsInfoTable_td">{{ user.faculty.faculty_name }}</td>
-                                <td class="td studentsInfoTable_td">{{ user.group.get_name }}</td>
-                                <td class="td studentsInfoTable_td">{{ user.phone_number }}</td>
-                            </tr>
-                        {% endfor %}
-                    </table>
                 </div>
             </div>
         </div>
     </div>
+
 {% endblock %}

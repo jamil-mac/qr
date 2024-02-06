@@ -7,7 +7,7 @@
 
 body {
     height: 100vh;
-    background-color: #dcdcdc;
+    background-color: #e3e3e3;
 }
 
 a {
@@ -16,6 +16,7 @@ a {
 
 .p {
     margin-top: 5px;
+    margin-right: 20px;
 }
 
 .container {
@@ -23,15 +24,16 @@ a {
     margin: auto;
 }
 
+.bgColor {
+    background-color: #54AEE2;
+    height: 140vh;
+}
+
 .eventName {
     color: #54AEE2;
     font-size: 32px;
     text-transform: uppercase;
     margin-bottom: 13px;
-}
-
-.p {
-    margin-right: 20px;
 }
 
 .input {
@@ -46,8 +48,6 @@ a {
     margin-bottom: 13px;
     margin-top: 8px;
 }
-
-
 
 .button {
     margin-top: 13px;
@@ -84,14 +84,12 @@ a {
     box-shadow: 0 0 30px 6px rgba(34, 60, 80, 0.2);
 }
 
-.register_eventName{
+.register_eventName {
     color: #54AEE2;
     font-size: 32px;
     text-transform: uppercase;
     margin-bottom: 13px;
 }
-
-
 
 /*eventCreate*/
 
@@ -104,36 +102,25 @@ a {
 
 /*3-project css */
 
-.eventGrid {
-    width: 100%;
-    padding: 20px;
-    display: grid;
-    grid-gap: 20px;
-}
-
 .eventInfo {
     box-shadow: 0 0 30px 3px rgba(34, 60, 80, 0.2);
-    padding: 20px;
+    padding: 10px;
+    background-color: white;
     transition: 0.4s;
+}
 
+.divEventInfo__grid {
+    width: 320px;
 }
 
 .divEventInfo_eventName {
     margin-bottom: 0;
-}
-
-.divEventInfo_button {
-    margin-top: 0;
+    width: 300px;
 }
 
 
-
-.divEventInfo {
-    display: flex;
-}
 
 /*studentsInfo*/
-
 
 .studentsInfoBar {
     padding: 10px;
@@ -153,8 +140,11 @@ a {
     margin-top: 13px;
 }
 
-
-
+.divEventInfo_button {
+    width: 300px;
+    margin: 10px auto;
+    padding: 0;
+}
 
 /*studentsInfoTable*/
 
@@ -173,15 +163,28 @@ a {
 }
 
 
-.studentsInfoTable_tr:hover {
-    background-color: #eaeaea;
+.studentsInfoTable_th,
+.studentsInfoTable_td{
+    border: 1px solid white;
+    border-collapse: collapse;
 }
 
+.studentsInfoTable_th:nth-child(odd),
+.studentsInfoTable_td:nth-child(odd) {
+    background-color: #b4deff;
+}
 
+.studentsInfoTable_th:nth-child(even),
+.studentsInfoTable_td:nth-child(even) {
+    background-color: #6ec6ff;
+}
 
 /*studentQr*/
 
-
+.studentsQr {
+    background-color: white;
+    padding: 20px;
+}
 
 .divQr_img {
     max-width: 100%;
@@ -227,6 +230,13 @@ a {
         width: 415px;
     }
 
+    .eventGrid {
+        width: 100%;
+        padding: 20px;
+        display: grid;
+        grid-gap: 20px;
+    }
+
     .eventInfo {
         display: flex;
         justify-content: space-between;
@@ -237,8 +247,14 @@ a {
         box-shadow: 0 0 10px 10px rgba(34, 60, 80, 0.2);
     }
 
+    .divEventInfo__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
     .studentsInfoGrid {
-        margin: 10px;
+        padding: 10px;
         height: 100vh;
     }
 
@@ -246,8 +262,8 @@ a {
         display: grid;
         grid-template-columns: 4fr 1fr;
         align-items: center;
-
         padding: 20px;
+        gap: 50px;
     }
 
     .studentsInfoBody {
@@ -284,8 +300,6 @@ a {
 
 @media screen and (min-width: 320px) and (max-width: 768px) {
 
-
-
     .register {
         max-width: 480px;
         margin: auto;
@@ -301,17 +315,18 @@ a {
         max-width: 480px;
         margin: auto;
         height: 100vh;
+        padding: 30px;
     }
 
     .eventGrid {
-        max-width: 480px;
-
+        max-width: 340px;
+        margin: auto;
     }
 
     .eventInfo {
-        min-height: 50vh;
-        display: grid;
-        grid-template-columns: 1fr;
+        width: 340px;
+        min-height: 200px;
+        margin-top: 20px;
         overflow: hidden;
     }
 
