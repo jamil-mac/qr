@@ -125,7 +125,7 @@ a {
 }
 
 .divEventInfo__grid {
-    width: 320px;
+    width: 480px;
 }
 
 .eventName__width {
@@ -225,7 +225,7 @@ a {
     }
 
     .register__grid {
-        max-width: 1000px;
+        max-width: 480px;
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-column-gap: 30px;
@@ -283,8 +283,8 @@ a {
 
     .divEventInfo__grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
     }
 
     .eventHeader_button__media {

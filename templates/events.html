@@ -23,7 +23,8 @@
                         <h1 class="eventName eventName__width eventName__hidden">{{ event.event_name }}</h1>
                     </div>
                     <div class="divEventInfo divEventInfo__grid">
-                        <p class="p">Time: <span><time class="time">{{ event.time }}</time></span></p>
+                        <p class="p">Date: <span class="number">{{ event.date|date:'d.m.Y' }}</span></p>
+                        <p class="p">Time: <span><time class="time">{{ event.time|time:'G:i' }}</time></span></p>
                         <p class="p">Students: <span class="number">{{ event.users.count }}</span></p>
                     </div>
                     <div class="divEventInfo">
