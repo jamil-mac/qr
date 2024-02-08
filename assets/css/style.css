@@ -14,6 +14,11 @@ a {
     text-decoration: none;
 }
 
+.header {
+    background-color: white;
+
+}
+
 .p {
     margin-top: 5px;
     margin-right: 20px;
@@ -53,6 +58,7 @@ a {
     margin-top: 13px;
     padding: 10px;
     display: block;
+    border: #54AEE2 2px solid;
     background-color: #54AEE2;
     color: whitesmoke;
     width: 100%;
@@ -60,7 +66,6 @@ a {
     font-size: 20px;
     text-transform: uppercase;
     border-radius: 16px;
-    border: none;
     outline: none;
     transition: 0.2s;
 }
@@ -102,6 +107,16 @@ a {
 
 /*3-project css */
 
+.eventHeader {
+    width: 100%;
+    padding: 10px;
+    background-color: white;
+}
+
+.eventHeader_img {
+    height: 50px;
+}
+
 .eventInfo {
     box-shadow: 0 0 30px 3px rgba(34, 60, 80, 0.2);
     padding: 10px;
@@ -113,11 +128,18 @@ a {
     width: 320px;
 }
 
-.divEventInfo_eventName {
+.eventName__width {
     margin-bottom: 0;
     width: 300px;
+    overflow: hidden;
+
 }
 
+.eventName__hidden {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
 
 /*studentsInfo*/
@@ -164,7 +186,7 @@ a {
 
 
 .studentsInfoTable_th,
-.studentsInfoTable_td{
+.studentsInfoTable_td {
     border: 1px solid white;
     border-collapse: collapse;
 }
@@ -202,7 +224,7 @@ a {
         align-items: center;
     }
 
-    .register {
+    .register__grid {
         max-width: 1000px;
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -217,10 +239,6 @@ a {
     }
 
     .register_divButton {
-        grid-column-start: 1;
-        grid-column-end: 3;
-        grid-row-start: 3;
-        grid-row-end: 4;
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 30px;
@@ -229,6 +247,22 @@ a {
     .eventCreate {
         width: 415px;
     }
+
+    .eventHeader {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+
+    .eventHeader_button{
+        margin-top: 0;
+        width: 200px;
+    }
+
+
 
     .eventGrid {
         width: 100%;
@@ -251,6 +285,10 @@ a {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 30px;
+    }
+
+    .eventHeader_button__media {
+        display: none;
     }
 
     .studentsInfoGrid {
@@ -298,12 +336,63 @@ a {
 
 }
 
-@media screen and (min-width: 320px) and (max-width: 768px) {
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+    .divCenter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /*height: 100%;*/
+        height: 100%;
+    }
+
+    .register__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 20px;
+    }
+
+    .register_eventName {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 1;
+    }
+
+    .register_divButton {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .Media {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .studentsQr {
+        width: 415px;
+    }
+
+    .eventCreate {
+        width: 340px;
+        padding: 30px;
+    }
+
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px){
+
+    .divCenter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
 
     .register {
-        max-width: 480px;
-        margin: auto;
-        height: 100vh;
+        width: 340px;
     }
 
     .register_divButton {
@@ -312,15 +401,41 @@ a {
     }
 
     .eventCreate {
-        max-width: 480px;
-        margin: auto;
-        height: 100vh;
+        width: 340px;
         padding: 30px;
     }
 
     .eventGrid {
         max-width: 340px;
         margin: auto;
+    }
+
+    .eventHeader {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 340px;
+        margin: auto;
+    }
+
+
+    .eventHeader_button {
+        display: none;
+
+    }
+
+    .eventHeader_button__media {
+        margin-top: 0;
+        width: 70px;
+        height: 70px;
+        font-size: 30px;
+        border-radius: 50%;
+        padding: 0;
+        background-color: #36ad54;
+        position: fixed;
+        bottom: 50px;
+        right: 50px;
     }
 
     .eventInfo {

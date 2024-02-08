@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block extra_css %}{% endblock %}
 
 {% block detail %}
@@ -8,7 +10,7 @@
         <div class="container">
             <div class="studentsInfoGrid">
                 <div class="studentsInfoHeader">
-                    <h1 class="eventName studentsInfoHeader_eventName">
+                    <h1 class="eventName studentsInfoHeader_eventName eventName__hidden eventName__width">
                         {{ object.event_name }}
                     </h1>
                     <a class="alink" href="{% url 'back:export-excel' pk=object.pk %}">
@@ -69,5 +71,4 @@
             </div>
         </div>
     </div>
-
 {% endblock %}

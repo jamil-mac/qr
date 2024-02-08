@@ -1,14 +1,26 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block extra_css %}{% endblock %}
 
 {% block detail %}
+    <header class="header">
+        <div class="container">
+            <div class="eventHeader">
+                <img src="{% static '/img/logo_1.png' %}" alt="Img-logo" class="eventHeader_img">
+                <a href="{% url 'back:event-create' %}">
+                    <button class="button eventHeader_button">Create Event</button>
+                </a>
+            </div>
+        </div>
+    </header>
     <div class="container">
         <div class="eventGrid">
             {% for event in events %}
                 <div class="eventInfo">
                     <div class="divEventInfo">
-                        <h1 class="eventName divEventInfo_eventName">{{ event.event_name}}</h1>
+                        <h1 class="eventName eventName__width eventName__hidden">{{ event.event_name }}</h1>
                     </div>
                     <div class="divEventInfo divEventInfo__grid">
                         <p class="p">Time: <span><time class="time">{{ event.time }}</time></span></p>
