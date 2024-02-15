@@ -42,6 +42,9 @@
                     </div>
                 </div>
             {% endfor %}
+            <a href="{% url 'back:event-create' %}">
+                <button class="button eventHeader_button__media">+</button>
+            </a>
         </div>
     </div>
 {% endblock %}
