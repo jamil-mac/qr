@@ -17,19 +17,20 @@ class EventModel(models.Model):
         return f'{self.event_name} in {self.date} at {self.time}'
 
     class Meta:
-        verbose_name = 'event'
-        verbose_name_plural = 'events'
+        verbose_name = _('event')
+        verbose_name_plural = _('events')
 
 
 class FacultyModel(models.Model):
     faculty_name = models.CharField(max_length=255, verbose_name=_('faculty_name'))
+    abbreviation = models.CharField(max_length=100, verbose_name=_('abbreviation'), null=True, blank=True)
 
     def __str__(self):
         return self.faculty_name
 
     class Meta:
-        verbose_name = 'faculty'
-        verbose_name_plural = 'faculties'
+        verbose_name = _('faculty')
+        verbose_name_plural = _('faculties')
 
 
 class GroupModel(models.Model):
@@ -43,8 +44,8 @@ class GroupModel(models.Model):
         return f'{self.group_number}-{self.letter}' if self.letter is not None else f'{self.group_number}'
 
     class Meta:
-        verbose_name = 'group'
-        verbose_name_plural = 'groups'
+        verbose_name = _('group')
+        verbose_name_plural = _('groups')
 
 
 class UserModel(models.Model):
@@ -106,5 +107,5 @@ class UserModel(models.Model):
         return f'{self.first_name} {self.last_name} registered to {self.event.event_name}'
 
     class Meta:
-        verbose_name = 'user'
-        verbose_name_plural = 'users'
+        verbose_name = _('user')
+        verbose_name_plural = _('users')
