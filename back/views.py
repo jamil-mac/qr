@@ -31,7 +31,7 @@ class EventDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         event_instance = self.get_object()
-        context['users'] = event_instance.users.all()
+        context['users'] = UserModel.objects.filter(event=event_instance)
         context['faculties'] = FacultyModel.objects.all()
 
         context['faculty_counts'] = {faculty.faculty_name: 0 for faculty in context['faculties']}

@@ -76,11 +76,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'uz'
 LANGUAGES = (
+    ('uz', _('Uzbek')),
     ('en', _('English')),
     ('ru', _('Russian')),
-    ('uz', _('Uzbek')),
 )
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'uz'
 

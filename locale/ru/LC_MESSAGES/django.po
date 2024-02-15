@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-15 13:43+0000\n"
+"POT-Creation-Date: 2024-02-15 14:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -107,3 +107,109 @@ msgstr "Русский"
 #: qr/settings.py:83
 msgid "Uzbek"
 msgstr "Узбекский"
+
+#: templates/event_create.html:10
+msgid "Event Create"
+msgstr "Создать Мероприятие"
+
+#: templates/event_create.html:14
+msgid "Event-name"
+msgstr "Название-мероприятия"
+
+#: templates/event_create.html:18 templates/events.html:28
+msgid "Date"
+msgstr "День"
+
+#: templates/event_create.html:21 templates/events.html:31
+msgid "Time"
+msgstr "Время"
+
+#: templates/event_create.html:29
+msgid "Create"
+msgstr "Создать"
+
+#: templates/event_create.html:34 templates/registration.html:54
+msgid "Back"
+msgstr "Назад"
+
+#: templates/event_detail.html:18
+msgid "download"
+msgstr "скачать"
+
+#: templates/event_detail.html:30 templates/event_detail.html:55
+#: templates/qr_for_user.html:21 templates/registration.html:35
+msgid "Faculty"
+msgstr "Факультет"
+
+#: templates/event_detail.html:31 templates/events.html:35
+msgid "Students"
+msgstr "Студенты"
+
+#: templates/event_detail.html:44
+msgid "back"
+msgstr "назад"
+
+#: templates/event_detail.html:50
+msgid "Students information"
+msgstr "Информация студентов"
+
+#: templates/event_detail.html:53
+msgid "First_name"
+msgstr "Имя"
+
+#: templates/event_detail.html:54
+msgid "Last_name"
+msgstr "Фамилия"
+
+#: templates/event_detail.html:56 templates/qr_for_user.html:18
+#: templates/registration.html:28
+msgid "Group"
+msgstr "Группа"
+
+#: templates/event_detail.html:57
+msgid "Number"
+msgstr "Номер"
+
+#: templates/events.html:14
+msgid "Create Event"
+msgstr "Создать Мероприятие"
+
+#: templates/events.html:40
+msgid "Information"
+msgstr "Информация"
+
+#: templates/qr_for_user.html:15
+msgid "Student"
+msgstr "Студент"
+
+#: templates/qr_for_user.html:24
+msgid "at"
+msgstr "в"
+
+#: templates/qr_for_user.html:30
+msgid "Download"
+msgstr "Скачать"
+
+#: templates/registration.html:11
+msgid "Register Form"
+msgstr "Регистрационная Форма"
+
+#: templates/registration.html:14
+msgid "First name"
+msgstr "Имя"
+
+#: templates/registration.html:18
+msgid "Last name"
+msgstr "Фамилия"
+
+#: templates/registration.html:22
+msgid "Phone number"
+msgstr "Номер Телефона"
+
+#: templates/registration.html:42
+msgid "Event"
+msgstr "Мероприятие"
+
+#: templates/registration.html:58
+msgid "Register"
+msgstr "Зарегестрироваться"

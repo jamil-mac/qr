@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% load static %}
 
@@ -10,7 +11,7 @@
             <div class="eventHeader">
                 <img src="{% static '/img/logo_1.png' %}" alt="Img-logo" class="eventHeader_img">
                 <a href="{% url 'back:event-create' %}">
-                    <button class="button eventHeader_button">Create Event</button>
+                    <button class="button eventHeader_button">{% trans 'Create Event' %}</button>
                 </a>
             </div>
         </div>
@@ -23,13 +24,20 @@
                         <h1 class="eventName eventName__width eventName__hidden">{{ event.event_name }}</h1>
                     </div>
                     <div class="divEventInfo divEventInfo__grid">
-                        <p class="p">Date: <span class="number">{{ event.date|date:'d.m.Y' }}</span></p>
-                        <p class="p">Time: <span><time class="time">{{ event.time|time:'G:i' }}</time></span></p>
-                        <p class="p">Students: <span class="number">{{ event.users.count }}</span></p>
+                        <p class="p">
+                            {% trans 'Date' %}:<span class="number">{{ event.date|date:'d.m.Y' }}</span>
+                        </p>
+                        <p class="p">
+                            {% trans 'Time' %}: <span><time
+                                class="time">{{ event.time|time:'G:i' }}</time></span>
+                        </p>
+                        <p class="p">
+                            {% trans 'Students' %}: <span class="number">{{ event.users.count }}</span>
+                        </p>
                     </div>
                     <div class="divEventInfo">
                         <a class="alink" href="{% url 'back:event-detail' pk=event.pk %}">
-                            <button class="button divEventInfo_button">Information</button>
+                            <button class="button divEventInfo_button">{% trans 'Information' %}</button>
                         </a>
                     </div>
                 </div>

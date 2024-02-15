@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% load static %}
 
@@ -6,7 +7,6 @@
 
 {% block detail %}
     <div class="bgColor">
-
         <div class="container">
             <div class="studentsInfoGrid">
                 <div class="studentsInfoHeader">
@@ -15,7 +15,7 @@
                     </h1>
                     <a class="alink" href="{% url 'back:export-excel' pk=object.pk %}">
                         <button class="button studentsInfoHeader_button">
-                            download
+                            {% trans 'download' %}
                         </button>
                     </a>
                 </div>
@@ -27,8 +27,8 @@
                         <div class="studentsBarTable">
                             <table class="table studentsBarTable_table">
                                 <tr class="tr">
-                                    <th class="th studentsInfoTable_th">Faculty:</th>
-                                    <th class="th studentsInfoTable_th">Students:</th>
+                                    <th class="th studentsInfoTable_th">{% trans 'Faculty' %}:</th>
+                                    <th class="th studentsInfoTable_th">{% trans 'Students' %}:</th>
                                 </tr>
                                 {% for faculty, count in faculty_counts.items %}
                                     <tr class="tr">
@@ -41,20 +41,20 @@
                         <div class="divButton">
                             <a class="alink" href="/">
                                 <button class="button">
-                                    back
+                                    {% trans 'back' %}
                                 </button>
                             </a>
                         </div>
                     </div>
                     <div class="studentsInfoTable">
-                        <h1 class="eventName studentsInfoTable_h1">Students information</h1>
+                        <h1 class="eventName studentsInfoTable_h1">{% trans 'Students information' %}</h1>
                         <table class="table studentsInfoTable_table">
                             <tr class="tr studentsInfoTable_tr">
-                                <th class="th studentsInfoTable_th">First_name</th>
-                                <th class="th studentsInfoTable_th">Last_name</th>
-                                <th class="th studentsInfoTable_th">Faculty</th>
-                                <th class="th studentsInfoTable_th">Group</th>
-                                <th class="th studentsInfoTable_th">Number</th>
+                                <th class="th studentsInfoTable_th">{% trans 'First_name' %}</th>
+                                <th class="th studentsInfoTable_th">{% trans 'Last_name' %}</th>
+                                <th class="th studentsInfoTable_th">{% trans 'Faculty' %}</th>
+                                <th class="th studentsInfoTable_th">{% trans 'Group' %}</th>
+                                <th class="th studentsInfoTable_th">{% trans 'Number' %}</th>
                             </tr>
                             {% for user in users %}
                                 <tr class="tr studentsInfoTable_tr">

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block extra_css %}{% endblock %}
 
@@ -6,18 +7,18 @@
 
     <div class="divCenter">
         <div class="eventCreate">
-            <h1 class="eventName">Form create</h1>
+            <h1 class="eventName">{% trans 'Event Create' %}</h1>
             <form action="" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="divInput">
-                    <label class="label">Event-name:
+                    <label class="label">{% trans 'Event-name' %}:
                         <input class="input" id="event_name" name="event_name" type="text" placeholder="Event-Name"
                                required>
                     </label>
-                    <label class="label">Date:
+                    <label class="label">{% trans 'Date' %}:
                         <input class="input" id="date" name="date" type="date" placeholder="Date" required>
                     </label>
-                    <label class="label">Time:
+                    <label class="label">{% trans 'Time' %}:
                         <input class="input" id="time" name="time" type="time" placeholder="Time" required>
                     </label>
                 </div>
@@ -25,12 +26,12 @@
                 <div class="divButton">
                     <a class="alink" href="{% url 'back:events' %}">
                         <button type="submit" class="button">
-                            create
+                            {% trans 'Create' %}
                         </button>
                     </a>
                     <a class="alink" href="{% url 'back:events' %}">
                         <button type="button" class="button">
-                            Back
+                            {% trans 'Back' %}
                         </button>
                     </a>
                 </div>
