@@ -21,12 +21,11 @@ def delete_expired_data():
 
             expired_events = EventModel.objects.filter(date__lt=current_time.date())
 
-
             if expired_events.count() != 0:
                 for expired_event in expired_events:
                     wb = Workbook()
                     sheet = wb.active
-                    users = expired_event.users.all()
+                    users = UserModel.objects.filter(event=expired_event)
                     faculties = FacultyModel.objects.all()
 
                     faculty_counts = {faculty.faculty_name: 0 for faculty in faculties}
@@ -49,6 +48,7 @@ def delete_expired_data():
                 print('first ' + user.qr_code)
                 print(str(user.qr_code))
                 if user.qr_code:
+                    print(f"Deleting file at path: {user.qr_code}")
                     delete_media_file(f'qrcodes/{str(user.qr_code)}')
 
                 print(str(user.qr_code))
@@ -61,6 +61,7 @@ def delete_expired_data():
 def delete_media_file(file_path):
     try:
         absolute_path = os.path.join(settings.MEDIA_ROOT, file_path)
+        print('absolute path: ' + absolute_path)
 
         if os.path.exists(absolute_path):
             os.remove(absolute_path)

@@ -5,10 +5,12 @@ from django.urls import path, include
 
 from qr import settings
 
-urlpatterns = []
+urlpatterns = [
+    path('admin/', admin.site.urls),
+]
 
 urlpatterns += i18n_patterns(
-    path('admin/', admin.site.urls),
+
     path('', include('back.urls', namespace='back')),
 )
 
