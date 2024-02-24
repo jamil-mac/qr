@@ -6,13 +6,16 @@ from back.views import EventsListView, EventDetailView, UserCreateView, EventCre
 app_name = 'back'
 
 urlpatterns = [
-    path('', EventsListView.as_view(), name='events'),
-    path('<int:pk>/', EventDetailView.as_view(), name='event-detail'),
+    # events
+    path('events/list/', EventsListView.as_view(), name='events'),
+    path('event/<int:pk>/', EventDetailView.as_view(), name='event-detail'),
     path('event/create/', EventCreateView.as_view(), name='event-create'),
-    path('register/', UserCreateView.as_view(), name='user-create'),
+
+    # users
+    path('', UserCreateView.as_view(), name='user-create'),
     path('user/<int:pk>/', UserQRCodeView.as_view(), name='user-detail'),
 
+    # webhook and excel
     path('export/<int:pk>/', export_data, name='export-excel'),
     path('webhook/', web_hook_view, name='webhook'),
-
 ]
