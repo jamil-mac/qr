@@ -55,19 +55,19 @@ class UserModel(models.Model):
     event = models.ForeignKey(
         EventModel,
         on_delete=models.CASCADE,
-        related_name=_('users'),
+        related_name='users',
         verbose_name=_('event')
     )
     faculty = models.ForeignKey(
         FacultyModel,
         on_delete=models.CASCADE,
-        related_name=_('users'),
+        related_name='users',
         verbose_name=_('faculty')
     )
     group = models.ForeignKey(
         GroupModel,
         on_delete=models.CASCADE,
-        related_name=_('users'),
+        related_name='users',
         verbose_name=_('group')
     )
     qr_code = models.ImageField(null=True, blank=True)
