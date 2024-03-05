@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-15 14:43+0000\n"
+"POT-Creation-Date: 2024-03-05 04:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -88,25 +88,25 @@ msgstr "фамилия"
 msgid "phone_number"
 msgstr "номер_телефона"
 
-#: back/models.py:58 back/models.py:64 back/models.py:70 back/models.py:111
-msgid "users"
-msgstr "пользователи"
-
 #: back/models.py:110
 msgid "user"
 msgstr "пользователь"
 
-#: qr/settings.py:81
+#: back/models.py:111
+msgid "users"
+msgstr "пользователи"
+
+#: qr/settings.py:87
+msgid "Uzbek"
+msgstr "Узбекский"
+
+#: qr/settings.py:88
 msgid "English"
 msgstr "Английский"
 
-#: qr/settings.py:82
+#: qr/settings.py:89
 msgid "Russian"
 msgstr "Русский"
-
-#: qr/settings.py:83
-msgid "Uzbek"
-msgstr "Узбекский"
 
 #: templates/event_create.html:10
 msgid "Event Create"
@@ -128,7 +128,7 @@ msgstr "Время"
 msgid "Create"
 msgstr "Создать"
 
-#: templates/event_create.html:34 templates/registration.html:54
+#: templates/event_create.html:34
 msgid "Back"
 msgstr "Назад"
 
@@ -209,6 +209,10 @@ msgstr "Номер Телефона"
 #: templates/registration.html:42
 msgid "Event"
 msgstr "Мероприятие"
+
+#: templates/registration.html:54
+msgid "Clear"
+msgstr "Очистить"
 
 #: templates/registration.html:58
 msgid "Register"

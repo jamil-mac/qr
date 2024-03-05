@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-15 14:43+0000\n"
+"POT-Creation-Date: 2024-03-05 04:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -86,25 +86,25 @@ msgstr "familiya"
 msgid "phone_number"
 msgstr "telefon_raqami"
 
-#: back/models.py:58 back/models.py:64 back/models.py:70 back/models.py:111
-msgid "users"
-msgstr "foydalanuvchilar"
-
 #: back/models.py:110
 msgid "user"
 msgstr "foydalanuvchi"
 
-#: qr/settings.py:81
+#: back/models.py:111
+msgid "users"
+msgstr "foydalanuvchilar"
+
+#: qr/settings.py:87
+msgid "Uzbek"
+msgstr "O'zbekcha"
+
+#: qr/settings.py:88
 msgid "English"
 msgstr "Inglizcha"
 
-#: qr/settings.py:82
+#: qr/settings.py:89
 msgid "Russian"
 msgstr "Ruscha"
-
-#: qr/settings.py:83
-msgid "Uzbek"
-msgstr "O'zbekcha"
 
 #: templates/event_create.html:10
 msgid "Event Create"
@@ -126,7 +126,7 @@ msgstr "Vaqt"
 msgid "Create"
 msgstr "Yaratish"
 
-#: templates/event_create.html:34 templates/registration.html:54
+#: templates/event_create.html:34
 msgid "Back"
 msgstr "Orqaga"
 
@@ -207,6 +207,10 @@ msgstr "Telefon Raqami"
 #: templates/registration.html:42
 msgid "Event"
 msgstr "Tadbir"
+
+#: templates/registration.html:54
+msgid "Clear"
+msgstr "O'chirish"
 
 #: templates/registration.html:58
 msgid "Register"
