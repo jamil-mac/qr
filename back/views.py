@@ -1,8 +1,8 @@
 from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView
 
-from back.forms import UserRegistrationForm, EventCreateForm
-from back.models import EventModel, UserModel, FacultyModel, GroupModel
+from back.forms import UserRegistrationForm, EventCreateForm, AnotherUserRegistrationForm
+from back.models import EventModel, UserModel, FacultyModel, GroupModel, AnotherUserModel
 
 from django.views.decorators.csrf import csrf_exempt
 from openpyxl.workbook import Workbook
@@ -32,6 +32,7 @@ class EventDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         event_instance = self.get_object()
         context['users'] = UserModel.objects.filter(event=event_instance)
+        context['another_users'] = AnotherUserModel.objects.filter(event=event_instance)
         context['faculties'] = FacultyModel.objects.all()
 
         context['faculty_counts'] = {faculty.faculty_name: 0 for faculty in context['faculties']}
@@ -49,7 +50,7 @@ class UserCreateView(CreateView):
     form_class = UserRegistrationForm
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+        context = super(UserCreateView, self).get_context_data(**kwargs)
         context['events'] = EventModel.objects.all()
         context['faculties'] = FacultyModel.objects.all()
         context['groups'] = GroupModel.objects.all()
@@ -61,6 +62,25 @@ class UserCreateView(CreateView):
     def get_success_url(self):
         user_pk = self.object.pk
         return reverse('back:user-detail', kwargs={'pk': user_pk})
+
+
+class AnotherUserCreateView(CreateView):
+    model = AnotherUserModel
+    template_name = 'another_registration.html'
+    form_class = AnotherUserRegistrationForm
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super(AnotherUserCreateView, self).get_context_data(**kwargs)
+        context['events'] = EventModel.objects.all()
+
+        return context
+
+    def get_success_url(self):
+        user_pk = self.object.pk
+        return reverse('back:another-user-detail', kwargs={'pk': user_pk})
 
 
 class EventCreateView(CreateView):
@@ -78,12 +98,18 @@ class UserQRCodeView(DetailView):
     template_name = 'qr_for_user.html'
 
 
+class AnotherUserQRCodeView(DetailView):
+    model = AnotherUserModel
+    template_name = 'qr_for_another_user.html'
+
+
 def export_data(request, pk):
     wb = Workbook()
     sheet = wb.active
 
     event = EventModel.objects.get(pk=pk)
     users = event.users.all()
+    another_users = event.another_users.all()
     faculties = FacultyModel.objects.all()
 
     faculty_counts = {faculty.faculty_name: 0 for faculty in faculties}
@@ -94,6 +120,8 @@ def export_data(request, pk):
 
     for faculty_name, count in faculty_counts.items():
         sheet.append([faculty_name, count])
+
+    sheet.append(['Erkin tinglovchilar', another_users.count()])
 
     filename = event.event_name
 

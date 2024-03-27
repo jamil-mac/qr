@@ -1,7 +1,7 @@
 from django.contrib import admin
-from modeltranslation.admin import TranslationAdmin, TabbedTranslationAdmin
+from modeltranslation.admin import TabbedTranslationAdmin
 
-from back.models import EventModel, UserModel, FacultyModel, GroupModel
+from back.models import EventModel, UserModel, FacultyModel, GroupModel, AnotherUserModel
 
 
 class MyTranslationAdmin(TabbedTranslationAdmin):
@@ -24,6 +24,11 @@ class EventModelAdmin(MyTranslationAdmin):
 @admin.register(UserModel)
 class UserModelAdmin(admin.ModelAdmin):
     list_display = ['id', 'first_name', 'last_name', 'faculty', 'event']
+
+
+@admin.register(AnotherUserModel)
+class AnotherUserModelAdmin(admin.ModelAdmin):
+    list_display = ['id', 'academic_degree', 'first_name', 'last_name']
 
 
 @admin.register(FacultyModel)

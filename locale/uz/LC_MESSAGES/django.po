@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-05 04:07+0000\n"
+"POT-Creation-Date: 2024-03-27 07:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,11 +30,11 @@ msgstr "sana"
 msgid "time"
 msgstr "vaqt"
 
-#: back/models.py:14 back/models.py:75
+#: back/models.py:14 back/models.py:75 back/models.py:128
 msgid "created_at"
 msgstr "yaratilgan_vaqti"
 
-#: back/models.py:20 back/models.py:59
+#: back/models.py:20 back/models.py:59 back/models.py:123
 msgid "event"
 msgstr "tadbir"
 
@@ -74,15 +74,15 @@ msgstr "guruh"
 msgid "groups"
 msgstr "guruhlar"
 
-#: back/models.py:52
+#: back/models.py:52 back/models.py:116
 msgid "first_name"
 msgstr "ism"
 
-#: back/models.py:53
+#: back/models.py:53 back/models.py:117
 msgid "last_name"
 msgstr "familiya"
 
-#: back/models.py:54
+#: back/models.py:54 back/models.py:118
 msgid "phone_number"
 msgstr "telefon_raqami"
 
@@ -93,6 +93,18 @@ msgstr "foydalanuvchi"
 #: back/models.py:111
 msgid "users"
 msgstr "foydalanuvchilar"
+
+#: back/models.py:115
+msgid "academic_degree"
+msgstr "akademik_daraja"
+
+#: back/models.py:162
+msgid "another user"
+msgstr "boshqa foydalanuvchi"
+
+#: back/models.py:163
+msgid "another users"
+msgstr "boshqa foydalanuvchilar"
 
 #: qr/settings.py:87
 msgid "Uzbek"
@@ -105,6 +117,38 @@ msgstr "Inglizcha"
 #: qr/settings.py:89
 msgid "Russian"
 msgstr "Ruscha"
+
+#: templates/another_registration.html:11 templates/registration.html:11
+msgid "Register Form"
+msgstr "Ro'yxatdan o'tish"
+
+#: templates/another_registration.html:14 templates/registration.html:14
+msgid "First name"
+msgstr "Ism"
+
+#: templates/another_registration.html:18 templates/registration.html:18
+msgid "Last name"
+msgstr "Familiya"
+
+#: templates/another_registration.html:22 templates/registration.html:22
+msgid "Phone number"
+msgstr "Telefon Raqami"
+
+#: templates/another_registration.html:26 templates/event_detail.html:79
+msgid "Academic Degree"
+msgstr "Ilmiy Daraja"
+
+#: templates/another_registration.html:32 templates/registration.html:42
+msgid "Event"
+msgstr "Tadbir"
+
+#: templates/another_registration.html:44
+msgid "Clear"
+msgstr "O'chirish"
+
+#: templates/another_registration.html:48 templates/registration.html:58
+msgid "Register"
+msgstr "Ro'yxatdan o'tish"
 
 #: templates/event_create.html:10
 msgid "Event Create"
@@ -134,84 +178,77 @@ msgstr "Orqaga"
 msgid "download"
 msgstr "Yuklab olish"
 
-#: templates/event_detail.html:30 templates/event_detail.html:55
+#: templates/event_detail.html:30 templates/event_detail.html:59
 #: templates/qr_for_user.html:21 templates/registration.html:35
 msgid "Faculty"
 msgstr "Fakultet"
 
-#: templates/event_detail.html:31 templates/events.html:35
-msgid "Students"
-msgstr "talabalar"
+#: templates/event_detail.html:31 templates/event_detail.html:61
+#: templates/event_detail.html:80
+msgid "Number"
+msgstr "Raqam"
 
-#: templates/event_detail.html:44
+#: templates/event_detail.html:48
 msgid "back"
 msgstr "orqaga"
 
-#: templates/event_detail.html:50
+#: templates/event_detail.html:54
 msgid "Students information"
 msgstr "Talabalar ma'lumoti"
 
-#: templates/event_detail.html:53
+#: templates/event_detail.html:57 templates/event_detail.html:77
 msgid "First_name"
 msgstr "Ism"
 
-#: templates/event_detail.html:54
+#: templates/event_detail.html:58 templates/event_detail.html:78
 msgid "Last_name"
 msgstr "Familiya"
 
-#: templates/event_detail.html:56 templates/qr_for_user.html:18
+#: templates/event_detail.html:60 templates/qr_for_user.html:18
 #: templates/registration.html:28
 msgid "Group"
 msgstr "Guruh"
 
-#: templates/event_detail.html:57
-msgid "Number"
-msgstr "Raqam"
+#: templates/event_detail.html:74
+msgid "Free Listeners"
+msgstr "Holis Tinglovchilar"
 
 #: templates/events.html:14
 msgid "Create Event"
 msgstr "Tadbirni Yaratish"
 
-#: templates/events.html:40
+#: templates/events.html:35
+msgid "Students"
+msgstr "talabalar"
+
+#: templates/events.html:41
+msgid "Other Listeners"
+msgstr "Boshqa Eshituvchilar"
+
+#: templates/events.html:49
 msgid "Information"
 msgstr "Ma'lumot"
+
+#: templates/qr_for_another_user.html:15
+msgid "Full Name"
+msgstr "To'liq ism"
+
+#: templates/qr_for_another_user.html:18
+msgid "Phone Number"
+msgstr "Telefon Raqami"
+
+#: templates/qr_for_another_user.html:26 templates/qr_for_user.html:24
+msgid "at"
+msgstr "da"
+
+#: templates/qr_for_another_user.html:32 templates/qr_for_user.html:30
+msgid "Download"
+msgstr "Yuklab olish"
 
 #: templates/qr_for_user.html:15
 msgid "Student"
 msgstr "Talaba"
 
-#: templates/qr_for_user.html:24
-msgid "at"
-msgstr "da"
-
-#: templates/qr_for_user.html:30
-msgid "Download"
-msgstr "Yuklab olish"
-
-#: templates/registration.html:11
-msgid "Register Form"
-msgstr "Ro'yxatdan o'tish"
-
-#: templates/registration.html:14
-msgid "First name"
-msgstr "Ism"
-
-#: templates/registration.html:18
-msgid "Last name"
-msgstr "Familiya"
-
-#: templates/registration.html:22
-msgid "Phone number"
-msgstr "Telefon Raqami"
-
-#: templates/registration.html:42
-msgid "Event"
-msgstr "Tadbir"
-
 #: templates/registration.html:54
-msgid "Clear"
-msgstr "O'chirish"
-
-#: templates/registration.html:58
-msgid "Register"
-msgstr "Ro'yxatdan o'tish"
+msgid "Free Listener"
+msgstr "Hosil Tinglovchi"

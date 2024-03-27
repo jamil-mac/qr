@@ -7,61 +7,83 @@
 
 {% block detail %}
     <div class="bgColor">
-        <div class="container">
-            <div class="studentsInfoGrid">
-                <div class="studentsInfoHeader">
-                    <h1 class="eventName studentsInfoHeader_eventName eventName__hidden eventName__width">
-                        {{ object.event_name }}
-                    </h1>
-                    <a class="alink" href="{% url 'back:export-excel' pk=object.pk %}">
-                        <button class="button studentsInfoHeader_button">
-                            {% trans 'download' %}
-                        </button>
-                    </a>
-                </div>
-                <div class="studentsInfoBody">
-                    <div class="studentsInfoBar">
-                        <div class="eventInfoBar">
-                            <p class="p">{{ object.date }} at {{ object.time }}</p>
-                        </div>
-                        <div class="studentsBarTable">
-                            <table class="table studentsBarTable_table">
-                                <tr class="tr">
-                                    <th class="th studentsInfoTable_th">{% trans 'Faculty' %}:</th>
-                                    <th class="th studentsInfoTable_th">{% trans 'Students' %}:</th>
-                                </tr>
-                                {% for faculty, count in faculty_counts.items %}
-                                    <tr class="tr">
-                                        <td class="td studentsInfoTable_td"> {{ faculty }}</td>
-                                        <td class="td studentsInfoTable_td">{{ count }}</td>
-                                    </tr>
-                                {% endfor %}
-                            </table>
-                        </div>
-                        <div class="divButton">
-                            <a class="alink" href="{% url 'back:events' %}">
-                                <button class="button">
-                                    {% trans 'back' %}
-                                </button>
-                            </a>
-                        </div>
+    <div class="container">
+        <div class="studentsInfoGrid">
+            <div class="studentsInfoHeader">
+                <h1 class="eventName studentsInfoHeader_eventName eventName__hidden eventName__width">
+                    {{ object.event_name }}
+                </h1>
+                <a class="alink" href="{% url 'back:export-excel' pk=object.pk %}">
+                    <button class="button studentsInfoHeader_button">
+                        {% trans 'download' %}
+                    </button>
+                </a>
+            </div>
+            <div class="studentsInfoBody">
+                <div class="studentsInfoBar">
+                    <div class="eventInfoBar">
+                        <p class="p">{{ object.date }} at {{ object.time }}</p>
                     </div>
+                    <div class="studentsBarTable">
+                        <table class="table studentsBarTable_table">
+                            <tr class="tr">
+                                <th class="th studentsInfoTable_th">{% trans 'Faculty' %}:</th>
+                                <th class="th studentsInfoTable_th">{% trans 'Number' %}:</th>
+                            </tr>
+                            {% for faculty, count in faculty_counts.items %}
+                                <tr class="tr">
+                                    <td class="td studentsInfoTable_td"> {{ faculty }}</td>
+                                    <td class="td studentsInfoTable_td">{{ count }}</td>
+                                </tr>
+                            {% endfor %}
+                            <tr>
+                                <td class="td studentsInfoTable_td">Erkin tinglovchilar:</td>
+                                <td class="td studentsInfoTable_td">{{ object.another_users.count }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="divButton">
+                        <a class="alink" href="{% url 'back:events' %}">
+                            <button class="button">
+                                {% trans 'back' %}
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="studentsInfoTable">
+                    <h1 class="eventName studentsInfoTable_h1">{% trans 'Students information' %}</h1>
+                    <table class="table studentsInfoTable_table">
+                        <tr class="tr studentsInfoTable_tr">
+                            <th class="th studentsInfoTable_th">{% trans 'First_name' %}</th>
+                            <th class="th studentsInfoTable_th">{% trans 'Last_name' %}</th>
+                            <th class="th studentsInfoTable_th">{% trans 'Faculty' %}</th>
+                            <th class="th studentsInfoTable_th">{% trans 'Group' %}</th>
+                            <th class="th studentsInfoTable_th">{% trans 'Number' %}</th>
+                        </tr>
+                        {% for user in users %}
+                            <tr class="tr studentsInfoTable_tr">
+                                <td class="td studentsInfoTable_td">{{ user.first_name }}</td>
+                                <td class="td studentsInfoTable_td">{{ user.last_name }}</td>
+                                <td class="td studentsInfoTable_td">{{ user.faculty.faculty_name }}</td>
+                                <td class="td studentsInfoTable_td">{{ user.group.get_name }}</td>
+                                <td class="td studentsInfoTable_td">{{ user.phone_number }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
                     <div class="studentsInfoTable">
-                        <h1 class="eventName studentsInfoTable_h1">{% trans 'Students information' %}</h1>
+                        <h1 class="eventName studentsInfoTable_h1">{% trans 'Free Listeners' %}</h1>
                         <table class="table studentsInfoTable_table">
                             <tr class="tr studentsInfoTable_tr">
                                 <th class="th studentsInfoTable_th">{% trans 'First_name' %}</th>
                                 <th class="th studentsInfoTable_th">{% trans 'Last_name' %}</th>
-                                <th class="th studentsInfoTable_th">{% trans 'Faculty' %}</th>
-                                <th class="th studentsInfoTable_th">{% trans 'Group' %}</th>
+                                <th class="th studentsInfoTable_th">{% trans 'Academic Degree' %}</th>
                                 <th class="th studentsInfoTable_th">{% trans 'Number' %}</th>
                             </tr>
-                            {% for user in users %}
+                            {% for user in another_users %}
                                 <tr class="tr studentsInfoTable_tr">
                                     <td class="td studentsInfoTable_td">{{ user.first_name }}</td>
                                     <td class="td studentsInfoTable_td">{{ user.last_name }}</td>
-                                    <td class="td studentsInfoTable_td">{{ user.faculty.faculty_name }}</td>
-                                    <td class="td studentsInfoTable_td">{{ user.group.get_name }}</td>
+                                    <td class="td studentsInfoTable_td">{{ user.academic_degree }}</td>
                                     <td class="td studentsInfoTable_td">{{ user.phone_number }}</td>
                                 </tr>
                             {% endfor %}

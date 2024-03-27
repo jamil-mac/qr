@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block detail %}
+    <div class="container">
+        <div class="Media">
+            <div class="studentsQr">
+                <div class="divQr">
+                    <img class="img divQr_img" src="{{ object.qr_code.url }}" alt="QR">
+                </div>
+                <div class="studentsInfoP">
+                    <h1 class="eventName">
+                        {{ object.event.event_name }}
+                    </h1>
+                    <p class="p">
+                        {% trans 'Full Name' %}: {{ object.academic_degree }} {{ object.first_name }} {{ object.last_name }}
+                    </p>
+                    <p class="p">
+                        {% trans 'Phone Number' %}:
+                        {% if object.phone_number|stringformat:"s"|slice:"0:1" == "+" %}
+                            {{ object.phone_number }}
+                        {% else %}
+                            +{{ object.phone_number }}
+                        {% endif %}
+                    </p>
+                    <p class="p">
+                        {{ object.event.date }} {% trans 'at' %} {{ object.event.time }}
+                    </p>
+                </div>
+                <div class="divButton">
+                    <a class="alink" href="{{ object.qr_code.url }}" download="qrcode.png">
+                        <button class="button studentsQr_button">
+                            {% trans 'Download' %}
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

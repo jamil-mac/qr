@@ -32,7 +32,16 @@
                                 class="time">{{ event.time|time:'G:i' }}</time></span>
                         </p>
                         <p class="p">
-                            {% trans 'Students' %}: <span class="number">{{ event.users.count }}</span>
+                            {% trans 'Students' %}:
+                            <span class="number">
+                                {% if event.users %}{{ event.users.count }}{% else %}0{% endif %}
+                            </span>
+                        </p>
+                        <p class="p">
+                            {% trans 'Other Listeners' %}:
+                            <span class="number">
+                                {% if event.another_users %}{{ event.another_users.count }}{% else %}0{% endif %}
+                            </span>
                         </p>
                     </div>
                     <div class="divEventInfo">

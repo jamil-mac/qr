@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-05 04:07+0000\n"
+"POT-Creation-Date: 2024-03-27 07:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,11 +32,11 @@ msgstr "день"
 msgid "time"
 msgstr "время"
 
-#: back/models.py:14 back/models.py:75
+#: back/models.py:14 back/models.py:75 back/models.py:128
 msgid "created_at"
 msgstr "время_создания"
 
-#: back/models.py:20 back/models.py:59
+#: back/models.py:20 back/models.py:59 back/models.py:123
 msgid "event"
 msgstr "мероприятие"
 
@@ -76,15 +76,15 @@ msgstr "группа"
 msgid "groups"
 msgstr "группы"
 
-#: back/models.py:52
+#: back/models.py:52 back/models.py:116
 msgid "first_name"
 msgstr "имя"
 
-#: back/models.py:53
+#: back/models.py:53 back/models.py:117
 msgid "last_name"
 msgstr "фамилия"
 
-#: back/models.py:54
+#: back/models.py:54 back/models.py:118
 msgid "phone_number"
 msgstr "номер_телефона"
 
@@ -95,6 +95,18 @@ msgstr "пользователь"
 #: back/models.py:111
 msgid "users"
 msgstr "пользователи"
+
+#: back/models.py:115
+msgid "academic_degree"
+msgstr "научная степень"
+
+#: back/models.py:162
+msgid "another user"
+msgstr "другой пользователь"
+
+#: back/models.py:163
+msgid "another users"
+msgstr "другие пользователи"
 
 #: qr/settings.py:87
 msgid "Uzbek"
@@ -107,6 +119,38 @@ msgstr "Английский"
 #: qr/settings.py:89
 msgid "Russian"
 msgstr "Русский"
+
+#: templates/another_registration.html:11 templates/registration.html:11
+msgid "Register Form"
+msgstr "Регистрационная Форма"
+
+#: templates/another_registration.html:14 templates/registration.html:14
+msgid "First name"
+msgstr "Имя"
+
+#: templates/another_registration.html:18 templates/registration.html:18
+msgid "Last name"
+msgstr "Фамилия"
+
+#: templates/another_registration.html:22 templates/registration.html:22
+msgid "Phone number"
+msgstr "Номер Телефона"
+
+#: templates/another_registration.html:26 templates/event_detail.html:79
+msgid "Academic Degree"
+msgstr "Научная Степень"
+
+#: templates/another_registration.html:32 templates/registration.html:42
+msgid "Event"
+msgstr "Мероприятие"
+
+#: templates/another_registration.html:44
+msgid "Clear"
+msgstr "Очистить"
+
+#: templates/another_registration.html:48 templates/registration.html:58
+msgid "Register"
+msgstr "Зарегестрироваться"
 
 #: templates/event_create.html:10
 msgid "Event Create"
@@ -136,84 +180,77 @@ msgstr "Назад"
 msgid "download"
 msgstr "скачать"
 
-#: templates/event_detail.html:30 templates/event_detail.html:55
+#: templates/event_detail.html:30 templates/event_detail.html:59
 #: templates/qr_for_user.html:21 templates/registration.html:35
 msgid "Faculty"
 msgstr "Факультет"
 
-#: templates/event_detail.html:31 templates/events.html:35
-msgid "Students"
-msgstr "Студенты"
+#: templates/event_detail.html:31 templates/event_detail.html:61
+#: templates/event_detail.html:80
+msgid "Number"
+msgstr "Номер"
 
-#: templates/event_detail.html:44
+#: templates/event_detail.html:48
 msgid "back"
 msgstr "назад"
 
-#: templates/event_detail.html:50
+#: templates/event_detail.html:54
 msgid "Students information"
 msgstr "Информация студентов"
 
-#: templates/event_detail.html:53
+#: templates/event_detail.html:57 templates/event_detail.html:77
 msgid "First_name"
 msgstr "Имя"
 
-#: templates/event_detail.html:54
+#: templates/event_detail.html:58 templates/event_detail.html:78
 msgid "Last_name"
 msgstr "Фамилия"
 
-#: templates/event_detail.html:56 templates/qr_for_user.html:18
+#: templates/event_detail.html:60 templates/qr_for_user.html:18
 #: templates/registration.html:28
 msgid "Group"
 msgstr "Группа"
 
-#: templates/event_detail.html:57
-msgid "Number"
-msgstr "Номер"
+#: templates/event_detail.html:74
+msgid "Free Listeners"
+msgstr "Непредвзятый слушатель"
 
 #: templates/events.html:14
 msgid "Create Event"
 msgstr "Создать Мероприятие"
 
-#: templates/events.html:40
+#: templates/events.html:35
+msgid "Students"
+msgstr "Студенты"
+
+#: templates/events.html:41
+msgid "Other Listeners"
+msgstr "Остальные слушатели"
+
+#: templates/events.html:49
 msgid "Information"
 msgstr "Информация"
+
+#: templates/qr_for_another_user.html:15
+msgid "Full Name"
+msgstr "Полное имя"
+
+#: templates/qr_for_another_user.html:18
+msgid "Phone Number"
+msgstr "Номер Телефона"
+
+#: templates/qr_for_another_user.html:26 templates/qr_for_user.html:24
+msgid "at"
+msgstr "в"
+
+#: templates/qr_for_another_user.html:32 templates/qr_for_user.html:30
+msgid "Download"
+msgstr "Скачать"
 
 #: templates/qr_for_user.html:15
 msgid "Student"
 msgstr "Студент"
 
-#: templates/qr_for_user.html:24
-msgid "at"
-msgstr "в"
-
-#: templates/qr_for_user.html:30
-msgid "Download"
-msgstr "Скачать"
-
-#: templates/registration.html:11
-msgid "Register Form"
-msgstr "Регистрационная Форма"
-
-#: templates/registration.html:14
-msgid "First name"
-msgstr "Имя"
-
-#: templates/registration.html:18
-msgid "Last name"
-msgstr "Фамилия"
-
-#: templates/registration.html:22
-msgid "Phone number"
-msgstr "Номер Телефона"
-
-#: templates/registration.html:42
-msgid "Event"
-msgstr "Мероприятие"
-
 #: templates/registration.html:54
-msgid "Clear"
-msgstr "Очистить"
-
-#: templates/registration.html:58
-msgid "Register"
-msgstr "Зарегестрироваться"
+msgid "Free Listener"
+msgstr "Непредвзятый Слушатель"
