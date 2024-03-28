@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load i18n %}
+
 {% block detail %}
     <div class="container">
         <div class="Media">
@@ -12,10 +12,10 @@
                         {{ object.event.event_name }}
                     </h1>
                     <p class="p">
-                        {% trans 'Full Name' %}: {{ object.academic_degree }} {{ object.first_name }} {{ object.last_name }}
+                        Ism Familiya: {{ object.academic_degree }} {{ object.first_name }} {{ object.last_name }}
                     </p>
                     <p class="p">
-                        {% trans 'Phone Number' %}:
+                        Telefon Raqam:
                         {% if object.phone_number|stringformat:"s"|slice:"0:1" == "+" %}
                             {{ object.phone_number }}
                         {% else %}
@@ -23,13 +23,13 @@
                         {% endif %}
                     </p>
                     <p class="p">
-                        {{ object.event.date }} {% trans 'at' %} {{ object.event.time }}
+                        {{ object.event.date }} soat {{ object.event.time }} da
                     </p>
                 </div>
                 <div class="divButton">
                     <a class="alink" href="{{ object.qr_code.url }}" download="qrcode.png">
                         <button class="button studentsQr_button">
-                            {% trans 'Download' %}
+                            Yuklab olish
                         </button>
                     </a>
                 </div>

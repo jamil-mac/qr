@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load i18n %}
+
 {% block detail %}
     <div class="container">
         <div class="Media">
@@ -12,22 +12,22 @@
                         {{ object.event.event_name }}
                     </h1>
                     <p class="p">
-                        {% trans 'Student' %}: {{ object.first_name }} {{ object.last_name }}
+                        Talaba: {{ object.first_name }} {{ object.last_name }}
                     </p>
                     <p class="p">
-                        {% trans 'Group' %}: {{ object.group.get_name }}
+                        Guruh: {{ object.group.get_name }}
                     </p>
                     <p class="p">
-                        {% trans 'Faculty' %}: {{ object.faculty.faculty_name }}
+                        Fakultet: {{ object.faculty.faculty_name }}
                     </p>
                     <p class="p">
-                        {{ object.event.date }} {% trans 'at' %} {{ object.event.time }}
+                        {{ object.event.date }} soat {{ object.event.time }} da
                     </p>
                 </div>
                 <div class="divButton">
                     <a class="alink" href="{{ object.qr_code.url }}" download="qrcode.png">
                         <button class="button studentsQr_button">
-                            {% trans 'Download' %}
+                            Yuklab olish
                         </button>
                     </a>
                 </div>

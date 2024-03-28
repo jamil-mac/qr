@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load i18n %}
 
 {% block detail %}
 
@@ -8,38 +7,38 @@
         <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="register">
-                <h1 class="eventName register_eventName">{% trans 'Register Form' %}</h1>
+                <h1 class="eventName register_eventName">Registratsiya</h1>
                 <div class="register__grid">
                     <div class="divInput">
-                        <label class="label"> {% trans 'First name' %}:
+                        <label class="label"> Ism:
                             <input class="input" id="first_name" name="first_name" required type="text"
                                    placeholder="First-Name">
                         </label>
-                        <label class="label"> {% trans 'Last name' %}:
+                        <label class="label"> Familiya:
                             <input class="input" id="last_name" name="last_name" required type="text"
                                    placeholder="Last-Name">
                         </label>
-                        <label class="label"> {% trans 'Phone number' %}:
+                        <label class="label"> Telefon Raqam:
                             <input class="input" id="phone_number" name="phone_number" required type="number"
                                    placeholder="Number">
                         </label>
                     </div>
                     <div class="divSelect">
-                        <label class="label">{% trans 'Group' %}:
+                        <label class="label">Guruh:
                             <select class="input" id="group" name="group" required>
                                 {% for group in groups %}
                                     <option class="option" value="{{ group.id }}">{{ group.get_name }}</option>
                                 {% endfor %}
                             </select>
                         </label>
-                        <label class="label">{% trans 'Faculty' %}:
+                        <label class="label">Fakultet:
                             <select class="input" id="faculty" name="faculty" required>
                                 {% for faculty in faculties %}
                                     <option class="option" value="{{ faculty.id }}">{{ faculty.faculty_name }}</option>
                                 {% endfor %}
                             </select>
                         </label>
-                        <label class="label">{% trans 'Event' %}:
+                        <label class="label">Tadbir:
                             <select class="input" name="event" required>
                                 {% for event in events %}
                                     <option class="option" value="{{ event.id }}">{{ event.event_name }}</option>
@@ -51,11 +50,11 @@
                 <div class="divButton register_divButton">
                     <a class="aLink" href="{% url 'back:another-user-create' %}">
                         <button type="button" class="button register_button__back">
-                            {% trans 'Free Listener' %}
+                            Holis Tinglovchi
                         </button>
                     </a>
                     <button type="submit" class="aLink button register_button__register">
-                        {% trans 'Register' %}
+                        Saqlash
                     </button>
                 </div>
             </div>

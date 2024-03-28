@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load i18n %}
 
 {% load static %}
 
@@ -10,55 +9,59 @@
     <div class="container">
         <div class="studentsInfoGrid">
             <div class="studentsInfoHeader">
-                <h1 class="eventName studentsInfoHeader_eventName eventName__hidden eventName__width">
+                <h2 class="eventName studentsInfoHeader_eventName eventName__hidden eventName__width">
                     {{ object.event_name }}
-                </h1>
+                </h2>
                 <a class="alink" href="{% url 'back:export-excel' pk=object.pk %}">
                     <button class="button studentsInfoHeader_button">
-                        {% trans 'download' %}
+                        Yuklab olish
                     </button>
                 </a>
             </div>
             <div class="studentsInfoBody">
                 <div class="studentsInfoBar">
                     <div class="eventInfoBar">
-                        <p class="p">{{ object.date }} at {{ object.time }}</p>
+                        <p class="p">{{ object.date }} soat {{ object.time }} da</p>
                     </div>
                     <div class="studentsBarTable">
                         <table class="table studentsBarTable_table">
                             <tr class="tr">
-                                <th class="th studentsInfoTable_th">{% trans 'Faculty' %}:</th>
-                                <th class="th studentsInfoTable_th">{% trans 'Number' %}:</th>
+                                <th class="th studentsInfoTable_th">Fakultet:</th>
+                                <th class="th studentsInfoTable_th">Soni:</th>
                             </tr>
                             {% for faculty, count in faculty_counts.items %}
                                 <tr class="tr">
-                                    <td class="td studentsInfoTable_td"> {{ faculty }}</td>
+                                    <td class="td studentsInfoTable_td td__left"> {{ faculty }}</td>
                                     <td class="td studentsInfoTable_td">{{ count }}</td>
                                 </tr>
                             {% endfor %}
                             <tr>
-                                <td class="td studentsInfoTable_td">Erkin tinglovchilar:</td>
-                                <td class="td studentsInfoTable_td">{{ object.another_users.count }}</td>
+                                <td class="td studentsInfoTable_td studentsInfoTable_td__green1 td__left">Holis tinglovchilar:</td>
+                                <td class="td studentsInfoTable_td studentsInfoTable_td__green2">{{ object.another_users.count }}</td>
                             </tr>
                         </table>
                     </div>
                     <div class="divButton">
                         <a class="alink" href="{% url 'back:events' %}">
                             <button class="button">
-                                {% trans 'back' %}
+                                Orqaga
                             </button>
                         </a>
                     </div>
                 </div>
                 <div class="studentsInfoTable">
-                    <h1 class="eventName studentsInfoTable_h1">{% trans 'Students information' %}</h1>
-                    <table class="table studentsInfoTable_table">
+                    <div class="nameDiv">
+                        <h2 class="eventName studentsInfoTable_h1">Talaba Ma'lumoti</h2>
+{#                        <button class="open-close" id="open_button">&#9660</button>#}
+{#                        <button id="close_button">Yopish</button>#}
+                    </div>
+                    <table class="table studentsInfoTable_table" id="first_div">
                         <tr class="tr studentsInfoTable_tr">
-                            <th class="th studentsInfoTable_th">{% trans 'First_name' %}</th>
-                            <th class="th studentsInfoTable_th">{% trans 'Last_name' %}</th>
-                            <th class="th studentsInfoTable_th">{% trans 'Faculty' %}</th>
-                            <th class="th studentsInfoTable_th">{% trans 'Group' %}</th>
-                            <th class="th studentsInfoTable_th">{% trans 'Number' %}</th>
+                            <th class="th studentsInfoTable_th">Ism</th>
+                            <th class="th studentsInfoTable_th">Familiya</th>
+                            <th class="th studentsInfoTable_th">Fakultet</th>
+                            <th class="th studentsInfoTable_th">Guruh</th>
+                            <th class="th studentsInfoTable_th">Telefon Raqam</th>
                         </tr>
                         {% for user in users %}
                             <tr class="tr studentsInfoTable_tr">
@@ -66,25 +69,30 @@
                                 <td class="td studentsInfoTable_td">{{ user.last_name }}</td>
                                 <td class="td studentsInfoTable_td">{{ user.faculty.faculty_name }}</td>
                                 <td class="td studentsInfoTable_td">{{ user.group.get_name }}</td>
-                                <td class="td studentsInfoTable_td">{{ user.phone_number }}</td>
+                                <td class="td studentsInfoTable_td">+{{ user.phone_number }}</td>
                             </tr>
                         {% endfor %}
                     </table>
-                    <div class="studentsInfoTable">
-                        <h1 class="eventName studentsInfoTable_h1">{% trans 'Free Listeners' %}</h1>
+                    <div class="divListener">
+                        <h2 class="eventName studentsInfoTable_h1">Holis tinglovchilar</h2>
                         <table class="table studentsInfoTable_table">
                             <tr class="tr studentsInfoTable_tr">
-                                <th class="th studentsInfoTable_th">{% trans 'First_name' %}</th>
-                                <th class="th studentsInfoTable_th">{% trans 'Last_name' %}</th>
-                                <th class="th studentsInfoTable_th">{% trans 'Academic Degree' %}</th>
-                                <th class="th studentsInfoTable_th">{% trans 'Number' %}</th>
+                                <th class="th studentsInfoTable_th">Ilmiy daraja</th>
+                                <th class="th studentsInfoTable_th">Ism</th>
+                                <th class="th studentsInfoTable_th">Familiya</th>
+                                <th class="th studentsInfoTable_th">Telefon Raqam</th>
                             </tr>
                             {% for user in another_users %}
                                 <tr class="tr studentsInfoTable_tr">
+                                    <td class="td studentsInfoTable_td">
+                                        {% if user.academic_degree %}
+                                            {{ user.academic_degree }}
+                                        {% endif %}
+
+                                    </td>
                                     <td class="td studentsInfoTable_td">{{ user.first_name }}</td>
                                     <td class="td studentsInfoTable_td">{{ user.last_name }}</td>
-                                    <td class="td studentsInfoTable_td">{{ user.academic_degree }}</td>
-                                    <td class="td studentsInfoTable_td">{{ user.phone_number }}</td>
+                                    <td class="td studentsInfoTable_td">+{{ user.phone_number }}</td>
                                 </tr>
                             {% endfor %}
                         </table>

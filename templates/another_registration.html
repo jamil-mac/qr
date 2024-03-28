@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load i18n %}
 
 {% block detail %}
 
@@ -8,28 +7,27 @@
         <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="register">
-                <h1 class="eventName register_eventName">{% trans 'Register Form' %}</h1>
+                <h1 class="eventName register_eventName">Registratsiya</h1>
                 <div class="register__grid">
                     <div class="divInput">
-                        <label class="label"> {% trans 'First name' %}:
+                        <label class="label">Ism:
                             <input class="input" id="first_name" name="first_name" required type="text"
                                    placeholder="Ism">
                         </label>
-                        <label class="label"> {% trans 'Last name' %}:
+                        <label class="label">Familiya:
                             <input class="input" id="last_name" name="last_name" required type="text"
                                    placeholder="Familiya">
                         </label>
-                        <label class="label"> {% trans 'Phone number' %}:
+                        <label class="label"> Telefon Raqam:
                             <input class="input" id="phone_number" name="phone_number" required type="number"
                                    placeholder="Telefon Raqam">
                         </label>
-                        <label class="label"> {% trans 'Academic Degree' %}:
-                            <input class="input" id="academic_degree" name="academic_degree" required type="text"
+                        <label class="label">Ilmiy daraja:
+                            <input class="input" id="academic_degree" name="academic_degree" type="text"
                                    placeholder="Akademik daraja">
                         </label>
-                    </div>
-                    <div class="divSelect">
-                        <label class="label">{% trans 'Event' %}:
+                        <div class="divSelect">
+                        <label class="label">Tadbirlar:
                             <select class="input" name="event" required>
                                 {% for event in events %}
                                     <option class="option" value="{{ event.id }}">{{ event.event_name }}</option>
@@ -37,15 +35,16 @@
                             </select>
                         </label>
                     </div>
+                    </div>
                 </div>
                 <div class="divButton register_divButton">
                     <a class="aLink" href="/">
                         <button type="button" class="button register_button__back">
-                            {% trans 'Clear' %}
+                            Tozalash
                         </button>
                     </a>
                     <button type="submit" class="aLink button register_button__register">
-                        {% trans 'Register' %}
+                        Saqlash
                     </button>
                 </div>
             </div>

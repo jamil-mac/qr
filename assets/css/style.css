@@ -168,6 +168,14 @@ a {
     padding: 0;
 }
 
+.td {
+    text-align: center;
+}
+
+.td__left {
+    text-align: left;
+}
+
 /*studentsInfoTable*/
 
 .studentsInfoTable {
@@ -201,6 +209,14 @@ a {
     background-color: #6ec6ff;
 }
 
+.studentsInfoTable_td__green1 {
+    background-color: #53e677 !important;
+}
+
+.studentsInfoTable_td__green2 {
+    background-color: #4bd56e !important;
+}
+
 /*studentQr*/
 
 .studentsQr {
@@ -210,6 +226,16 @@ a {
 
 .divQr_img {
     max-width: 100%;
+}
+
+.studentsInfoTable_table {
+    opacity: 1;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.nameDiv {
+    display: flex;
 }
 
 /*media*/
@@ -227,8 +253,6 @@ a {
     .register__grid {
         max-width: 480px;
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-column-gap: 30px;
     }
 
     .register_eventName {
@@ -283,7 +307,7 @@ a {
 
     .divEventInfo__grid {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 10px;
     }
 

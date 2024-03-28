@@ -1,23 +1,10 @@
 from django.contrib import admin
-from modeltranslation.admin import TabbedTranslationAdmin
 
 from back.models import EventModel, UserModel, FacultyModel, GroupModel, AnotherUserModel
 
 
-class MyTranslationAdmin(TabbedTranslationAdmin):
-    class Media:
-        js = (
-            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
-            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
-            'modeltranslation/js/tabbed_translation_fields.js',
-        )
-        css = {
-            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
-        }
-
-
 @admin.register(EventModel)
-class EventModelAdmin(MyTranslationAdmin):
+class EventModelAdmin(admin.ModelAdmin):
     list_display = ['id', 'event_name', 'date', 'time']
 
 
@@ -32,7 +19,7 @@ class AnotherUserModelAdmin(admin.ModelAdmin):
 
 
 @admin.register(FacultyModel)
-class FacultyModelAdmin(MyTranslationAdmin):
+class FacultyModelAdmin(admin.ModelAdmin):
     list_display = ['id', 'faculty_name', 'abbreviation']
 
 
