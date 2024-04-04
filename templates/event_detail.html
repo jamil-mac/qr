@@ -6,136 +6,137 @@
 
 {% block detail %}
     <div class="bgColor">
-    <div class="container">
-        <div class="studentsInfoGrid">
-            <div class="studentsInfoHeader">
-                <h2 class="eventName studentsInfoHeader_eventName eventName__hidden eventName__width">
-                    {{ object.event_name }}
-                </h2>
-                <a class="alink" href="{% url 'back:export-excel' pk=object.pk %}">
-                    <button class="button studentsInfoHeader_button">
-                        Yuklab olish
-                    </button>
-                </a>
-            </div>
-            <div class="studentsInfoBody">
-                <div class="studentsInfoBar">
-                    <div class="eventInfoBar">
-                        <p class="p">{{ object.date }} soat {{ object.time|time:'H:i' }} da</p>
-                    </div>
-                    <div class="studentsBarTable">
-                        <table class="table studentsBarTable_table">
-                            <tr class="tr">
-                                <th class="th studentsInfoTable_th">Fakultet:</th>
-                                <th class="th studentsInfoTable_th">Soni:</th>
-                            </tr>
-                            {% for faculty, count in faculty_counts.items %}
-                                <tr class="tr">
-                                    <td class="td studentsInfoTable_td td__left"> {{ faculty }}</td>
-                                    <td class="td studentsInfoTable_td">{{ count }}</td>
-                                </tr>
-                            {% endfor %}
-                            <tr>
-                                <td class="td studentsInfoTable_td studentsInfoTable_td__green1 td__left">Holis
-                                    tinglovchilar:
-                                </td>
-                                <td class="td studentsInfoTable_td studentsInfoTable_td__green2">{{ object.another_users.count }}</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="divButton">
-                        <a class="alink" href="{% url 'back:events' %}">
-                            <button class="button">
-                                Orqaga
-                            </button>
-                        </a>
-                    </div>
+        <div class="container">
+            <div class="studentsInfoGrid">
+                <div class="studentsInfoHeader">
+                    <h2 class="eventName studentsInfoHeader_eventName eventName__hidden eventName__width">
+                        {{ object.event_name }}
+                    </h2>
+                    <a class="alink" href="{% url 'back:export-excel' pk=object.pk %}">
+                        <button class="button studentsInfoHeader_button">
+                            Yuklab olish
+                        </button>
+                    </a>
                 </div>
-                <div class="studentsInfoTable">
-                    <div class="divStudents">
-                        <div id="openDiv1" class="nameDiv">
-                            <h2 class="h2 eventName studentsInfoTable_h1">Talaba Ma'lumoti</h2>
-                            <img id="image1" class="arrow" src="{% static '/img/realArrow.png' %}" alt="img">
+                <div class="studentsInfoBody">
+                    <div class="studentsInfoBar">
+                        <div class="eventInfoBar">
+                            <p class="p">{{ object.date }} soat {{ object.time|time:'H:i' }} da</p>
                         </div>
-                        <div class="studentsInfo hidden" id="first_div">
-                            <div style="min-height: 0">
-                                <table class="table studentsInfoTable_table">
-                                    <tr class="tr studentsInfoTable_tr">
-                                        <th class="th studentsInfoTable_th">Ism</th>
-                                        <th class="th studentsInfoTable_th">Familiya</th>
-                                        <th class="th studentsInfoTable_th">Fakultet</th>
-                                        <th class="th studentsInfoTable_th">Guruh</th>
-                                        <th class="th studentsInfoTable_th">Telefon Raqam</th>
+                        <div class="studentsBarTable">
+                            <table class="table studentsBarTable_table">
+                                <tr class="tr">
+                                    <th class="th studentsInfoTable_th">Fakultet:</th>
+                                    <th class="th studentsInfoTable_th">Soni:</th>
+                                </tr>
+                                {% for faculty, count in faculty_counts.items %}
+                                    <tr class="tr">
+                                        <td class="td studentsInfoTable_td td__left"> {{ faculty }}</td>
+                                        <td class="td studentsInfoTable_td">{{ count }}</td>
                                     </tr>
-                                    {% for user in users %}
+                                {% endfor %}
+                                <tr>
+                                    <td class="td studentsInfoTable_td studentsInfoTable_td__green1 td__left">Holis
+                                        tinglovchilar:
+                                    </td>
+                                    <td class="td studentsInfoTable_td studentsInfoTable_td__green2">{{ object.another_users.count }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="divButton">
+                            <a class="alink" href="{% url 'back:events' %}">
+                                <button class="button">
+                                    Orqaga
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="studentsInfoTable">
+                        <div class="divStudents">
+                            <div id="openDiv1" class="nameDiv">
+                                <h2 class="h2 eventName studentsInfoTable_h1">Talaba Ma'lumoti</h2>
+                                <img id="image1" class="arrow" src="{% static '/img/realArrow.png' %}" alt="img">
+                            </div>
+                            <div class="studentsInfo hidden" id="first_div">
+                                <div style="min-height: 0">
+                                    <table class="table studentsInfoTable_table">
                                         <tr class="tr studentsInfoTable_tr">
-                                            <td class="td studentsInfoTable_td">{{ user.first_name }}</td>
-                                            <td class="td studentsInfoTable_td">{{ user.last_name }}</td>
-                                            <td class="td studentsInfoTable_td">{{ user.faculty.faculty_name }}</td>
-                                            <td class="td studentsInfoTable_td">{{ user.group }}</td>
-                                            <td class="td studentsInfoTable_td">
-                                                {% if user.phone_number|first == '+' %}
-                                                    {% if user.phone_number|length|get_digit:'-1' < 10 %}
-                                                        998{{ user.phone_number }}
-                                                    {% else %}
-                                                        {{ user.phone_number }}
-                                                    {% endif %}
-                                                {% else %}
-                                                    {% if user.phone_number|length|get_digit:'-1' < 10 %}
-                                                        +998{{ user.phone_number }}
-                                                    {% else %}
-                                                        +{{ user.phone_number }}
-                                                    {% endif %}
-                                                {% endif %}
-                                            </td>
+                                            <th class="th studentsInfoTable_th">Ism</th>
+                                            <th class="th studentsInfoTable_th">Familiya</th>
+                                            <th class="th studentsInfoTable_th">Fakultet</th>
+                                            <th class="th studentsInfoTable_th">Guruh</th>
+                                            <th class="th studentsInfoTable_th">Telefon Raqam</th>
                                         </tr>
-                                    {% endfor %}
-                                </table>
+                                        {% for user in users %}
+                                            <tr class="tr studentsInfoTable_tr">
+                                                <td class="td studentsInfoTable_td">{{ user.first_name }}</td>
+                                                <td class="td studentsInfoTable_td">{{ user.last_name }}</td>
+                                                <td class="td studentsInfoTable_td">{{ user.faculty.faculty_name }}</td>
+                                                <td class="td studentsInfoTable_td">{{ user.group }}</td>
+                                                <td class="td studentsInfoTable_td">
+                                                    {% if user.phone_number|first == '+' %}
+                                                        {% if user.phone_number|length|get_digit:'-1' < 10 %}
+                                                            998{{ user.phone_number }}
+                                                        {% else %}
+                                                            {{ user.phone_number }}
+                                                        {% endif %}
+                                                    {% else %}
+                                                        {% if user.phone_number|length|get_digit:'-1' < 10 %}
+                                                            +998{{ user.phone_number }}
+                                                        {% else %}
+                                                            +{{ user.phone_number }}
+                                                        {% endif %}
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="divListener">
-                        <div id="openDiv2" class="nameDiv">
-                            <h2 class="h2 eventName studentsInfoTable_h1">Holis tinglovchilar</h2>
-                            <img id="image2" class="arrow" src="{% static '/img/realArrow.png' %}" alt="img">
-                        </div>
-                        <div class="ListenerInfo hidden" id="second_div">
-                            <div style="min-height: 0">
-                                <table class="table studentsInfoTable_table">
-                                    <tr class="tr studentsInfoTable_tr">
-                                        <th class="th studentsInfoTable_th">Ilmiy daraja</th>
-                                        <th class="th studentsInfoTable_th">Ism</th>
-                                        <th class="th studentsInfoTable_th">Familiya</th>
-                                        <th class="th studentsInfoTable_th">Telefon Raqam</th>
-                                    </tr>
-                                    {% for user in another_users %}
+                        <div class="divListener">
+                            <div id="openDiv2" class="nameDiv">
+                                <h2 class="h2 eventName studentsInfoTable_h1">Holis tinglovchilar</h2>
+                                <img id="image2" class="arrow" src="{% static '/img/realArrow.png' %}" alt="img">
+                            </div>
+                            <div class="ListenerInfo hidden" id="second_div">
+                                <div style="min-height: 0">
+                                    <table class="table studentsInfoTable_table">
                                         <tr class="tr studentsInfoTable_tr">
-                                            <td class="td studentsInfoTable_td">
-                                                {% if user.academic_degree %}
-                                                    {{ user.academic_degree }}
-                                                {% endif %}
-
-                                            </td>
-                                            <td class="td studentsInfoTable_td">{{ user.first_name }}</td>
-                                            <td class="td studentsInfoTable_td">{{ user.last_name }}</td>
-                                            <td class="td studentsInfoTable_td">
-                                                {% if user.phone_number|first == '+' %}
-                                                    {% if user.phone_number|length|get_digit:'-1' < 10 %}
-                                                        998{{ user.phone_number }}
-                                                    {% else %}
-                                                        {{ user.phone_number }}
-                                                    {% endif %}
-                                                {% else %}
-                                                    {% if user.phone_number|length|get_digit:'-1' < 10 %}
-                                                        +998{{ user.phone_number }}
-                                                    {% else %}
-                                                        +{{ user.phone_number }}
-                                                    {% endif %}
-                                                {% endif %}
-                                            </td>
+                                            <th class="th studentsInfoTable_th">Ilmiy daraja</th>
+                                            <th class="th studentsInfoTable_th">Ism</th>
+                                            <th class="th studentsInfoTable_th">Familiya</th>
+                                            <th class="th studentsInfoTable_th">Telefon Raqam</th>
                                         </tr>
-                                    {% endfor %}
-                                </table>
+                                        {% for user in another_users %}
+                                            <tr class="tr studentsInfoTable_tr">
+                                                <td class="td studentsInfoTable_td">
+                                                    {% if user.academic_degree %}
+                                                        {{ user.academic_degree }}
+                                                    {% endif %}
+
+                                                </td>
+                                                <td class="td studentsInfoTable_td">{{ user.first_name }}</td>
+                                                <td class="td studentsInfoTable_td">{{ user.last_name }}</td>
+                                                <td class="td studentsInfoTable_td">
+                                                    {% if user.phone_number|first == '+' %}
+                                                        {% if user.phone_number|length|get_digit:'-1' < 10 %}
+                                                            998{{ user.phone_number }}
+                                                        {% else %}
+                                                            {{ user.phone_number }}
+                                                        {% endif %}
+                                                    {% else %}
+                                                        {% if user.phone_number|length|get_digit:'-1' < 10 %}
+                                                            +998{{ user.phone_number }}
+                                                        {% else %}
+                                                            +{{ user.phone_number }}
+                                                        {% endif %}
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -154,19 +155,20 @@
         const image1 = document.getElementById("image1");
         const image2 = document.getElementById("image2");
 
-        let angle = 0;
+        let angle1 = 0;
+        let angle2 = 0;
 
         openDiv1.addEventListener("click", () => {
             first_div.classList.toggle('hidden')
             first_div.classList.toggle('open')
 
             function rotateImage() {
-                if (angle === 0) {
-                    angle += 90;
-                    image1.style.transform = `rotate(${angle}deg)`;
+                if (angle1 === 0) {
+                    angle1 += 90;
+                    image1.style.transform = `rotate(${angle1}deg)`;
                 } else {
-                    angle -= 90;
-                    image1.style.transform = `rotate(${angle}deg)`;
+                    angle1 -= 90;
+                    image1.style.transform = `rotate(${angle1}deg)`;
                 }
             }
 
@@ -178,12 +180,12 @@
             second_div.classList.toggle('open')
 
             function rotateImage() {
-                if (angle === 0) {
-                    angle += 90;
-                    image2.style.transform = `rotate(${angle}deg)`;
+                if (angle2 === 0) {
+                    angle2 += 90;
+                    image2.style.transform = `rotate(${angle2}deg)`;
                 } else {
-                    angle -= 90;
-                    image2.style.transform = `rotate(${angle}deg)`;
+                    angle2 -= 90;
+                    image2.style.transform = `rotate(${angle2}deg)`;
                 }
             }
 
