@@ -4,10 +4,10 @@
 
 
     <div class="divCenter">
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="" method="post" enctype="multipart/form-data" onsubmit="removeSpaces()">
             {% csrf_token %}
             <div class="register">
-                <h1 class="eventName register_eventName">Registratsiya</h1>
+                <h2 class="eventName register_eventName">Registratsiya</h2>
                 <div class="register__grid">
                     <div class="divInput">
                         <label class="label">Ism:
@@ -19,26 +19,29 @@
                                    placeholder="Familiya">
                         </label>
                         <label class="label"> Telefon Raqam:
-                            <input class="input" id="phone_number" name="phone_number" required type="number"
-                                   placeholder="Telefon Raqam">
+                            <input type="tel" class="input" id="phone_number" name="phone_number" value="+998 "
+                                   placeholder="+998 (__) ___ __ __ __" maxlength="19"
+                                   oninput="formatPhoneNumber(this)">
+
                         </label>
                         <label class="label">Ilmiy daraja:
                             <input class="input" id="academic_degree" name="academic_degree" type="text"
                                    placeholder="Akademik daraja">
                         </label>
                         <div class="divSelect">
-                        <label class="label">Tadbirlar:
-                            <select class="input" name="event" required>
-                                {% for event in events %}
-                                    <option class="option" value="{{ event.id }}">{{ event.event_name }}</option>
-                                {% endfor %}
-                            </select>
-                        </label>
-                    </div>
+                            <label class="label">Tadbirlar:
+                                <select class="input" name="event" required>
+                                    {% for event in events %}
+                                        <option class="option" value="{{ event.id }}">{{ event.event_name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </label>
+                        </div>
                     </div>
                 </div>
+
                 <div class="divButton register_divButton">
-                    <a class="aLink" href="/">
+                    <a class="aLink" href="{% url 'back:another-user-create' %}">
                         <button type="button" class="button register_button__back">
                             Tozalash
                         </button>
@@ -50,4 +53,40 @@
             </div>
         </form>
     </div>
+{% endblock %}
+
+
+{% block extra_js %}
+    <script>
+        function formatPhoneNumber(input) {
+            let phoneNumber = input.value.replace(/\D/g, '');
+            let formattedNumber = '+998 ';
+
+            if (phoneNumber.length > 3) {
+                formattedNumber += '(' + phoneNumber.substring(3, 5);
+            }
+
+            if (phoneNumber.length >= 5) {
+                formattedNumber += ') ' + phoneNumber.substring(5, 8);
+            }
+
+            if (phoneNumber.length >= 8) {
+                formattedNumber += ' ' + phoneNumber.substring(8, 10);
+            }
+
+            if (phoneNumber.length >= 10) {
+                formattedNumber += ' ' + phoneNumber.substring(10, 12);
+            }
+
+            if (phoneNumber.length >= 12) {
+                formattedNumber += ' ' + phoneNumber.substring(12, 14);
+            }
+
+            input.value = formattedNumber;
+
+            if (phoneNumber.length > 19) {
+                input.value = input.value.substring(0, 19);
+            }
+        }
+    </script>
 {% endblock %}

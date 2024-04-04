@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from back.models import EventModel, UserModel, FacultyModel, GroupModel, AnotherUserModel
+from back.models import EventModel, UserModel, FacultyModel, AnotherUserModel
 
 
 @admin.register(EventModel)
@@ -21,8 +21,3 @@ class AnotherUserModelAdmin(admin.ModelAdmin):
 @admin.register(FacultyModel)
 class FacultyModelAdmin(admin.ModelAdmin):
     list_display = ['id', 'faculty_name', 'abbreviation']
-
-
-@admin.register(GroupModel)
-class GroupModelAdmin(admin.ModelAdmin):
-    list_display = ['id', 'get_name']

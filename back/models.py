@@ -32,25 +32,10 @@ class FacultyModel(models.Model):
         verbose_name_plural = 'faculties'
 
 
-class GroupModel(models.Model):
-    group_number = models.IntegerField()
-    letter = models.CharField(max_length=3, null=True, blank=True)
-
-    def get_name(self):
-        return f'{self.group_number}-{self.letter}' if self.letter is not None else f'{self.group_number}'
-
-    def __str__(self):
-        return f'{self.group_number}-{self.letter}' if self.letter is not None else f'{self.group_number}'
-
-    class Meta:
-        verbose_name = 'group'
-        verbose_name_plural = 'groups'
-
-
 class UserModel(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    phone_number = models.CharField(max_length=13)
+    phone_number = models.CharField(max_length=20)
     event = models.ForeignKey(
         EventModel,
         on_delete=models.CASCADE,
@@ -61,11 +46,7 @@ class UserModel(models.Model):
         on_delete=models.CASCADE,
         related_name='users',
     )
-    group = models.ForeignKey(
-        GroupModel,
-        on_delete=models.CASCADE,
-        related_name='users',
-    )
+    group = models.CharField(max_length=5)
     qr_code = models.ImageField(null=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
@@ -111,7 +92,7 @@ class AnotherUserModel(models.Model):
     academic_degree = models.CharField(max_length=30, null=True, blank=True)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    phone_number = models.CharField(max_length=13)
+    phone_number = models.CharField(max_length=20)
     event = models.ForeignKey(
         EventModel,
         on_delete=models.CASCADE,

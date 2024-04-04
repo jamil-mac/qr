@@ -228,15 +228,49 @@ a {
     max-width: 100%;
 }
 
-.studentsInfoTable_table {
-    opacity: 1;
-    pointer-events: none;
-    transition: opacity 0.2s ease;
-}
-
 .nameDiv {
     display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
 }
+
+#first_div,
+#second_div{
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.5s ease-in-out;
+}
+
+.hidden {
+    overflow: hidden;
+}
+
+.open {
+    grid-template-rows: 1fr!important;
+    width: 100%;
+}
+
+.studentsInfo {
+    overflow: auto;
+}
+
+.ListenerInfo {
+    overflow: auto;
+}
+
+.arrow {
+    width: 32px;
+    height: 32px;
+    rotate: 270deg;
+    transition: transform 0.5s ease;
+}
+
+.h2 {
+    margin: 10px 0;
+}
+
+
 
 /*media*/
 
@@ -403,6 +437,8 @@ a {
         width: 340px;
         padding: 30px;
     }
+
+
 
 }
 

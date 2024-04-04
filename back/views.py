@@ -2,7 +2,7 @@ from django.urls import reverse
 from django.views.generic import ListView, DetailView, CreateView
 
 from back.forms import UserRegistrationForm, EventCreateForm, AnotherUserRegistrationForm
-from back.models import EventModel, UserModel, FacultyModel, GroupModel, AnotherUserModel
+from back.models import EventModel, UserModel, FacultyModel, AnotherUserModel
 
 from django.views.decorators.csrf import csrf_exempt
 from openpyxl.workbook import Workbook
@@ -53,7 +53,6 @@ class UserCreateView(CreateView):
         context = super(UserCreateView, self).get_context_data(**kwargs)
         context['events'] = EventModel.objects.all()
         context['faculties'] = FacultyModel.objects.all()
-        context['groups'] = GroupModel.objects.all()
         return context
 
     def form_valid(self, form):
